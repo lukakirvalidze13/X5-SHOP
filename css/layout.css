@@ -1,0 +1,756 @@
+/* ======================================================
+   HEADER — GLASS / AUTOMOTIVE UI
+====================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  background: rgba(7, 9, 13, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 72px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.logo span {
+  color: var(--color-primary);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+}
+
+.main-nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #fff;
+}
+
+/* Active underline */
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* =========================
+   LANGUAGE SWITCHER
+========================= */
+
+.lang-switcher {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  padding: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* =========================
+   SMALL BUTTON
+========================= */
+
+.btn-sm {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+/* =========================
+   MOBILE ADAPTATION
+========================= */
+
+@media (max-width: 900px) {
+  .header-inner {
+    grid-template-columns: auto auto;
+  }
+
+  .main-nav {
+    display: none;
+  }
+}
+
+
+/* ======================================================
+   HERO — NEXT-GEN LUXURY STYLE
+====================================================== */
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 2rem;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(31,107,255,0.18), transparent 35%),
+    radial-gradient(circle at 20% 70%, rgba(255,255,255,0.05), transparent 50%);
+  /* gradients remain as overlay */
+}
+
+/* Pseudo-element for blurred image */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.bmw.co.ke/content/dam/bmw/common/all-models/x-series/x5/2023/highlights/bmw-x-series-x5-sp-desktop.jpg") no-repeat center bottom;
+  background-size: cover;
+  filter: blur(4px) brightness(0.7); /* blur + slightly darken for readability */
+  z-index: 0;
+}
+
+/* Ensure text and buttons are above the background */
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Glassy overlay (optional) */
+.hero::after {
+  /* content: ""; */
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  max-width: 850px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  margin-top: 1.8rem;
+  font-size: 1.25rem;
+  max-width: 620px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 2.8rem;
+  padding: 1.1rem 2.5rem;
+  background: linear-gradient(135deg, #1f6bff, #0050c7);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(31, 107, 255, 0.25);
+}
+
+/* Hover effects */
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(31, 107, 255, 0.45);
+}
+
+/* Optional animated shine on hover */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2) 0%,
+    rgba(255,255,255,0) 60%
+  );
+  transform: rotate(25deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  transform: rotate(25deg) translateX(100%);
+}
+
+
+.stats {
+  padding: 6rem 0;
+  background: #07090d;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  text-align: center;
+}
+
+.stats h3 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.stats p {
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
+
+
+@keyframes hero-bg-motion {
+  0% {
+    transform: scale(1.05) translateX(0) translateY(0);
+  }
+  50% {
+    transform: scale(1.1) translateX(-2%) translateY(-1%);
+  }
+  100% {
+    transform: scale(1.05) translateX(0) translateY(0);
+  }
+}
+
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -10%; /* prevents blur edges */
+  background: url("https://www.bmw.co.ke/content/dam/bmw/common/all-models/x-series/x5/2023/highlights/bmw-x-series-x5-sp-desktop.jpg")
+    no-repeat center bottom;
+  background-size: cover;
+
+  filter: blur(2px) brightness(0.7);
+  animation: hero-bg-motion 9s ease-in-out infinite;
+
+  z-index: 0;
+}
+
+
+
+
+/* ===================== SECTION BASE ===================== */
+.sold-wall {
+  padding: 8rem 0;
+  background: linear-gradient(180deg, #07090d, #0b0e14);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===================== HEADER ===================== */
+.sold-wall-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.sold-wall-header h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+.sold-filters {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: #fff;
+  font-weight: 500;
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: rgba(31,107,255,0.2);
+  border-color: rgba(31,107,255,0.6);
+  color: #1f6bff;
+  transform: scale(1.05);
+}
+
+/* ===================== GRID ===================== */
+.sold-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  perspective: 1500px;
+}
+
+/* ===================== CARDS ===================== */
+.sold-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.6s ease;
+  will-change: transform, opacity;
+  position: relative;
+}
+
+.sold-card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sold-card-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ===================== HOVER EFFECTS ===================== */
+.sold-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.03);
+  box-shadow: 0 40px 80px rgba(31,107,255,0.3);
+}
+.sold-card:hover img {
+  transform: scale(1.08) rotateZ(0.5deg);
+}
+
+/* ===================== RARE CAR HIGHLIGHT ===================== */
+.sold-card[data-rare="yes"] {
+  border: 2px solid #1f6bff;
+  box-shadow: 0 0 20px rgba(31,107,255,0.4);
+  transition: all 0.5s ease;
+}
+.sold-card[data-rare="yes"]:hover {
+  box-shadow: 0 0 40px rgba(31,107,255,0.6), 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* ===================== ANIMATED ENTRY ===================== */
+.sold-card.show {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) rotateY(0deg);
+}
+
+/* ===================== MODAL ===================== */
+.sold-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,7,10,0.95);
+  backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.sold-modal.active {
+  display: flex;
+  opacity: 1;
+}
+.sold-modal-img {
+  max-width: 90vw;
+  max-height: 70vh;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+}
+.sold-modal.active .sold-modal-img {
+  transform: scale(1);
+}
+.sold-modal-details {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease 0.2s;
+}
+.sold-modal.active .sold-modal-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sold-modal-details h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.sold-modal-details p {
+  font-size: 1.1rem;
+  margin: 0.2rem 0;
+}
+
+/* ===================== CLOSE BUTTON ===================== */
+.sold-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2.4rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.sold-close:hover {
+  opacity: 1;
+}
+
+/* ===================== OPTIONAL PARTICLE EFFECT ===================== */
+.sold-card[data-rare="yes"]::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(31,107,255,0.2) 0%, transparent 60%);
+  pointer-events: none;
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.4; }
+  50% { transform: scale(1.05); opacity: 0.6; }
+}
+
+
+
+/* =========================
+   FULLSCREEN SOLD VEHICLE MODAL
+========================= */
+
+/* =========================
+   FULLSCREEN SOLD VEHICLE MODAL — NEXT GEN
+========================= */
+
+/* Backdrop with gradient + subtle animation */
+.sold-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,7,10,0.9);
+  backdrop-filter: blur(16px);
+  z-index: 998;
+  pointer-events: auto;
+  animation: backdropPulse 6s infinite alternate;
+}
+@keyframes backdropPulse {
+  0% { background: rgba(5,7,10,0.85); }
+  50% { background: rgba(5,7,10,0.92); }
+  100% { background: rgba(5,7,10,0.88); }
+}
+
+/* Modal container with scale + fade */
+.sold-modal-content {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 999;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: auto;
+}
+.sold-modal.active .sold-modal-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Top bar with close + neon arrows */
+.sold-modal-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  pointer-events: auto;
+}
+.sold-close {
+  font-size: 2.6rem;
+
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.sold-close:hover { transform: scale(1.1); opacity: 1; }
+
+.sold-modal-nav button {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  background: linear-gradient(90deg,#1f6bff,#3aa0ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(31,107,255,0.4);
+  transition: all 0.3s ease;
+}
+.sold-modal-nav button:hover {
+  box-shadow: 0 0 25px rgba(31,107,255,0.6);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Image container with parallax + glow effect */
+.sold-modal-image-container {
+  width: 100%;
+  max-width: 90vw;
+  max-height: 65vh;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 80px rgba(31,107,255,0.5), 0 0 60px rgba(31,107,255,0.3) inset;
+  position: relative;
+  perspective: 1200px;
+}
+.sold-modal-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+.sold-modal-image-container:hover img {
+  transform: scale(1.08) rotateY(2deg);
+  filter: brightness(1.05) contrast(1.1);
+}
+
+/* Floating neon particles effect (optional) */
+.sold-modal-image-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: particlesMove 15s linear infinite;
+}
+@keyframes particlesMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+/* Details Panel with glass/neon effect */
+.sold-modal-details {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(15,18,28,0.75);
+  border-radius: 20px;
+  padding: 2.5rem;
+  color: #fff;
+  text-align: left;
+  backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: 0 25px 70px rgba(31,107,255,0.5), 0 0 40px rgba(31,107,255,0.3) inset;
+  border: 1px solid rgba(31,107,255,0.2);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.sold-modal.active .sold-modal-details {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Car Title */
+.sold-modal-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+
+  animation: titleGlow 2s infinite alternate;
+}
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 5px #1f6bff; }
+  50% { text-shadow: 0 0 15px #3aa0ff, 0 0 20px #1f6bff; }
+  100% { text-shadow: 0 0 5px #1f6bff; }
+}
+
+/* Info Grid */
+.sold-modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.sold-modal-info-grid div strong {
+  color: #1f6bff;
+  font-weight: 600;
+}
+
+/* Share Buttons */
+.sold-modal-share {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.sold-modal-share button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  background: linear-gradient(135deg,#1f6bff,#3aa0ff,#00f0ff);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 5px 20px rgba(31,107,255,0.5);
+}
+.sold-modal-share button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(31,107,255,0.6);
+  filter: brightness(1.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .sold-modal-top { flex-direction: column; gap: 1rem; }
+  .sold-modal-info-grid { grid-template-columns: 1fr; }
+  .sold-modal-image-container { max-height: 50vh; }
+  .sold-modal-title { font-size: 2.2rem; }
+}
+
+
+
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,7,10,0.95);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.zoom-overlay.active {
+  display: flex;
+  animation: zoomFadeIn 0.4s ease forwards;
+}
+
+.zoom-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+.zoom-overlay img:hover {
+  transform: scale(1.05);
+}
+
+.zoom-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.zoom-close:hover {
+  opacity: 1;
+}
+
+@keyframes zoomFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.sold-modal-image-container{
+  cursor:pointer;
+}

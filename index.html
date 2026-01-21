@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BMW X5 Auction Platform</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header class="site-header">
+  <div class="container header-inner">
+
+    <!-- LEFT: BRAND -->
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        BMW<span>X</span>
+      </a>
+    </div>
+
+    <!-- CENTER: NAVIGATION -->
+    <nav class="main-nav">
+      <a href="index.html" class="active" data-i18n="nav.home">მთავარი</a>
+      <a href="auctions.html" data-i18n="nav.auctions">აუქციონები</a>
+      <a href="models.html" data-i18n="nav.models">მოდელები</a>
+      <a href="contact.html" data-i18n="nav.contact">კონტაქტი</a>
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-right">
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ka">KA</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+
+      <!-- Auth -->
+      <a href="login.html" data-i18n="auth.login" class="btn btn-secondary btn-sm">
+        შესვლა
+      </a>
+    </div>
+
+  </div>
+</header>
+
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 data-i18n="hero.title">BMW X5 აუქციონების პლატფორმა</h1>
+        <p class="premium" data-i18n="hero.subtitle">
+          პრემიუმ BMW X5 მოდელების ცოცხალი აუქციონები და დეტალური ინფორმაცია
+        </p>
+        <a href="auctions.html" class="btn-primary" data-i18n="hero.cta">
+          ნახე აუქციონები
+        </a>
+      </div>
+    </section>
+
+
+
+
+    <section class="sold-wall">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="sold-wall-header">
+      <h2 data-i18n="bmw.sold">წინა კვირაში გაყიდული </h2>
+      <div class="sold-filters">
+      <button class="filter-btn active" data-filter="all" data-i18n="filter.all">ყველა</button>
+      <button class="filter-btn" data-filter="2023" data-i18n="filter.2023">2023</button>
+      <button class="filter-btn" data-filter="2022" data-i18n="filter.2022">2022</button>
+      <button class="filter-btn" data-filter="rare" data-i18n="filter.rare">შეზღუდული 🔥</button>
+      </div>
+    </div>
+
+    <!-- Wall Grid -->
+    <div class="sold-wall-grid">
+
+      <!-- Example Card -->
+      <div class="sold-card" data-year="2023" data-rare="yes">
+        <img src="https://i.ytimg.com/vi/q8h5X1s9Ft0/maxresdefault.jpg" alt="BMW X5 Sold 1">
+        <div class="sold-card-info">
+          <h3>BMW X5 xDrive40i</h3>
+          <p data-i18n="sold.pricee">ფასი €85,000</p>
+          <p data-i18n="auction.bmw">აუქციონის თარიღი: იანვარი 6, 2026</p>
+        </div>
+      </div>
+
+      <div class="sold-card" data-year="2022" data-rare="no">
+        <img src="https://di-uploads-pod2.dealerinspire.com/bmwofwesleychapel/uploads/2024/09/BMW-MY25-X5M-Overview-Design-01-Desktop1-1024x712.jpg" alt="BMW X5 Sold 2">
+        <div class="sold-card-info">
+          <h3 >BMW X5 xDrive30d</h3>
+          <p data-i18n="x30.sold">ფასი €72,500</p>
+          <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
+        </div>
+      </div>
+
+      <!-- Add as many cards as you want -->
+    </div>
+
+  </div>
+
+
+
+  </div>
+
+<!-- Fullscreen Modal -->
+<div class="sold-modal" id="soldModal">
+  <div class="sold-modal-backdrop"></div>
+
+  <div class="sold-modal-content">
+
+    <!-- Top bar: close + nav -->
+    <div class="sold-modal-top">
+      <button class="sold-close">×</button>
+      <div class="sold-modal-nav">
+        <button id="prevCar">&larr;</button>
+        <button id="nextCar">&rarr;</button>
+      </div>
+    </div>
+
+    <!-- Car Image -->
+    <div class="sold-modal-image-container">
+      <img src="" alt="Sold Vehicle" class="sold-modal-img" id="modalImgZoomable"  />
+    </div>
+    <div id="zoomOverlay" class="zoom-overlay">
+    <button class="zoom-close">×</button>
+    <img src="" alt="Zoomed Vehicle" id="zoomedImage" />
+    </div>
+
+
+
+
+    <!-- Car Details Panel -->
+    <div class="sold-modal-details">
+      <h2 class="sold-modal-title"></h2>
+      <div class="sold-modal-info-grid">
+        <div><strong data-i18n="sold.price">ფასი:</strong> <span class="sold-modal-price"></span></div>
+        <div><strong data-i18n="sold.date">აუქციონის თარიღი:</strong> <span class="sold-modal-date"></span></div>
+        <div><strong data-i18n="sold.rarity">გაბარიტი:</strong> <span class="sold-modal-rarity"></span></div>
+        <div><strong data-i18n="sold.year">წელი:</strong> <span class="sold-modal-year"></span></div>
+        <div><strong data-i18n="sold.mileage">გარბენი:</strong> <span class="sold-modal-mileage"></span></div>
+        <div><strong data-i18n="sold.fuel">საწვავი:</strong> <span class="sold-modal-fuel"></span></div>
+        <div><strong data-i18n="sold.color">ფერი:</strong> <span class="sold-modal-color"></span></div>
+        <div><strong data-i18n="sold.engine">ძრავი:</strong> <span class="sold-modal-engine"></span></div>
+      </div>
+
+      <!-- Social Share -->
+      <div class="sold-modal-share">
+        <button>Share on Facebook</button>
+        <button>Share on Instagram</button>
+        <button>Share on Twitter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+
+
+
+<!-- STATS SECTION -->
+<section class="stats-section">
+  <div class="container stats-grid">
+
+    <div class="stat-card">
+      <span class="stat-value" data-target="1269">0</span>
+      <span class="stat-label" data-i18n="stats.activeAuctions">აქტიური აუქციონები</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-value" data-target="125669">0</span>
+      <span class="stat-label" data-i18n="stats.registeredUsers">მომხმარებლები</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-value" data-target="1255969">0</span>
+      <span class="stat-label" data-i18n="stats.vehiclesSold">გაყიდული მანქანები</span>
+    </div>
+
+  </div>
+  
+</section>
+
+
+  </main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <span class="footer-logo" data-i18n="logo">BMW<span>X</span></span>
+      <p data-i18n="footer.text">© 2026 BMW X5 Platform — ყველა უფლება დაცულია</p>
+    </div>
+
+    <nav class="footer-nav">
+      <a href="index.html" data-i18n="nav.home">მთავარი</a>
+      <a href="auctions.html" data-i18n="nav.auctions">აუქციონები</a>
+      <a href="models.html" data-i18n="nav.models">მოდელები</a>
+      <a href="contact.html" data-i18n="nav.contact">კონტაქტი</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a href="#" data-i18n="social.facebook" aria-label="Facebook">Facebook</a>
+      <a href="#" data-i18n="social.instagram" aria-label="Instagram">Instagram</a>
+      <a href="#" data-i18n="social.youtube" aria-label="YouTube">YouTube</a>
+    </div>
+
+  </div>
+</footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
