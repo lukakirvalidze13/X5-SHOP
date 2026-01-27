@@ -506,3 +506,33 @@ function initSliders() {
   });
 }
 
+function toggleFilter(category) {
+  const targetId = `opts-${category}`;
+  const drawer = document.getElementById(targetId);
+  const btn = drawer.parentElement.querySelector('.value-btn');
+
+  // Close all others
+  document.querySelectorAll('.flyout-drawer').forEach(d => {
+    if (d.id !== targetId) {
+      d.classList.remove('open');
+      d.parentElement.querySelector('.value-btn').classList.remove('active');
+    }
+  });
+
+  // Toggle current
+  const isOpen = drawer.classList.contains('open');
+  drawer.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+}
+
+// Close when clicking outside sidebar
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.filter-group')) {
+    document.querySelectorAll('.flyout-drawer').forEach(d => {
+      d.classList.remove('open');
+      d.parentElement.querySelector('.value-btn').classList.remove('active');
+    });
+  }
+});
+
+
