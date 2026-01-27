@@ -10,46 +10,11 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/pages.css" />
+
 </head>
 <body>
-
-  <!-- HEADER -->
- <header class="site-header">
-  <div class="container header-inner">
-
-    <!-- LEFT: BRAND -->
-    <div class="header-left">
-      <a href="index.html" class="logo">
-        BMW<span>X</span>
-      </a>
-    </div>
-
-    <!-- CENTER: NAVIGATION -->
-    <nav class="main-nav">
-      <a href="index.html" class="active" data-i18n="nav.home">მთავარი</a>
-      <a href="auctions.html" data-i18n="nav.auctions">აუქციონები</a>
-      <a href="models.html" data-i18n="nav.models">მოდელები</a>
-      <a href="contact.html" data-i18n="nav.contact">კონტაქტი</a>
-    </nav>
-
-    <!-- RIGHT: ACTIONS -->
-    <div class="header-right">
-
-      <!-- Language Switcher -->
-      <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="ka">KA</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-
-
-      <!-- Auth -->
-      <a href="login.html" data-i18n="auth.login" class="btn btn-secondary btn-sm">
-        შესვლა
-      </a>
-    </div>
-
-  </div>
-</header>
+<div id="header-root"></div>
+ 
 
 
   <!-- HERO -->
@@ -91,20 +56,58 @@
         <img src="https://i.ytimg.com/vi/q8h5X1s9Ft0/maxresdefault.jpg" alt="BMW X5 Sold 1">
         <div class="sold-card-info">
           <h3>BMW X5 xDrive40i</h3>
-          <p data-i18n="sold.pricee">ფასი €85,000</p>
+          <p data-i18n="sold.pricee">€85,000</p>
           <p data-i18n="auction.bmw">აუქციონის თარიღი: იანვარი 6, 2026</p>
         </div>
       </div>
 
-      <div class="sold-card" data-year="2022" data-rare="no">
-        <img src="https://di-uploads-pod2.dealerinspire.com/bmwofwesleychapel/uploads/2024/09/BMW-MY25-X5M-Overview-Design-01-Desktop1-1024x712.jpg" alt="BMW X5 Sold 2">
+      <div class="sold-card" data-year="2022" data-rare="yes">
+        <img src="https://www.marshallgoldman.com/imagetag/4436/3/l/Used-2025-BMW-X5-M-Competition-1756148090.jpg" alt="BMW X5 Sold 2">
         <div class="sold-card-info">
-          <h3 >BMW X5 xDrive30d</h3>
-          <p data-i18n="x30.sold">ფასი €72,500</p>
+          <h3 >BMW X5M Competition</h3>
+          <p data-i18n="x30.sold">€125,500</p>
           <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
         </div>
       </div>
 
+
+      <div class="sold-card" data-year="2023" data-rare="yes">
+        <img src="https://di-uploads-pod2.dealerinspire.com/bmwofwesleychapel/uploads/2024/09/BMW-MY25-X5M-Overview-Design-01-Desktop1-1024x712.jpg" alt="BMW X5 Sold 2">
+        <div class="sold-card-info">
+          <h3 >BMW X5 xDrive30d</h3>
+          <p data-i18n="x30.sold">€72,500</p>
+          <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
+        </div>
+      </div>
+
+        <div class="sold-card" data-year="2023" data-rare="no">
+        <img src="https://www.autoblog.com/.image/w_3840,q_auto:good,c_limit/MjA5MDg5MDQ2OTIwMTc3MjY0/2024-bmw-x5-m-competition.jpg?arena_f_auto" alt="BMW X5 Sold 2">
+        <div class="sold-card-info">
+          <h3 >BMW X5 xDrive30d</h3>
+          <p data-i18n="x30.sold">€72,500</p>
+          <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
+        </div>
+        </div>
+        
+
+        <div class="sold-card" data-year="2023" data-rare="no">
+        <img src="https://www.bmw-albania.com/content/dam/bmw/common/all-models/m-series/x5m/2023/highlights/bmw-m-series-x5-m-sd-bmw-individual-01.jpg" alt="BMW X5 Sold 2">
+        <div class="sold-card-info">
+          <h3 >BMW X5 xDrive30d</h3>
+          <p data-i18n="x30.sold">€72,500</p>
+          <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
+        </div>
+        </div>
+
+
+        <div class="sold-card" data-year="2023" data-rare="no">
+        <img src="https://autoshowmedia.pl/uploads/2q5cih7fyjmso8sck4.jpg" alt="BMW X5 Sold 2">
+        <div class="sold-card-info">
+          <h3 >BMW X5 xDrive30d</h3>
+          <p data-i18n="x30.sold">€72,500</p>
+          <p data-i18n="x30.auction">აუქციონის თარიღი: იანვარი 5, 2025</p>
+        </div>
+        </div>
       <!-- Add as many cards as you want -->
     </div>
 
@@ -122,11 +125,12 @@
 
     <!-- Top bar: close + nav -->
     <div class="sold-modal-top">
-      <button class="sold-close">×</button>
-      <div class="sold-modal-nav">
+            <div class="sold-modal-nav">
         <button id="prevCar">&larr;</button>
         <button id="nextCar">&rarr;</button>
       </div>
+      <button class="sold-close">×</button>
+
     </div>
 
     <!-- Car Image -->

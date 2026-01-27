@@ -1,47 +1,682 @@
-.main-nav ul {
+/* ======================================================
+   HERO — NEXT-GEN LUXURY STYLE
+====================================================== */
+
+.hero {
+  min-height: 90vh;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 2rem;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(31,107,255,0.18), transparent 35%),
+    radial-gradient(circle at 20% 70%, rgba(255,255,255,0.05), transparent 50%);
+  /* gradients remain as overlay */
 }
 
-.main-nav a {
-  font-size: 0.95rem;
-  color: var(--color-muted);
-  transition: color 0.2s ease;
+/* Pseudo-element for blurred image */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.bmw.co.ke/content/dam/bmw/common/all-models/x-series/x5/2023/highlights/bmw-x-series-x5-sp-desktop.jpg") no-repeat center bottom;
+  background-size: cover;
+  filter: blur(4px) brightness(0.7); /* blur + slightly darken for readability */
+  z-index: 0;
 }
 
-.main-nav a:hover {
+/* Ensure text and buttons are above the background */
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Glassy overlay (optional) */
+.hero::after {
+  /* content: ""; */
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  max-width: 850px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.has-dropdown {
+.hero p {
+  margin-top: 1.8rem;
+  font-size: 1.25rem;
+  max-width: 620px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 2.8rem;
+  padding: 1.1rem 2.5rem;
+  background: linear-gradient(135deg, #1f6bff, #0050c7);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(31, 107, 255, 0.25);
+}
+
+/* Hover effects */
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(31, 107, 255, 0.45);
+}
+
+/* Optional animated shine on hover */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2) 0%,
+    rgba(255,255,255,0) 60%
+  );
+  transform: rotate(25deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  transform: rotate(25deg) translateX(100%);
+}
+
+
+.stats {
+  padding: 6rem 0;
+  background: #07090d;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  text-align: center;
+}
+
+.stats h3 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.stats p {
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
+
+
+@keyframes hero-bg-motion {
+  0% {
+    transform: scale(1.05) translateX(0) translateY(0);
+  }
+  50% {
+    transform: scale(1.1) translateX(-2%) translateY(-1%);
+  }
+  100% {
+    transform: scale(1.05) translateX(0) translateY(0);
+  }
+}
+
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -10%; /* prevents blur edges */
+  background: url("https://www.bmw.co.ke/content/dam/bmw/common/all-models/x-series/x5/2023/highlights/bmw-x-series-x5-sp-desktop.jpg")
+    no-repeat center bottom;
+  background-size: cover;
+
+  filter: blur(2px) brightness(0.7);
+  animation: hero-bg-motion 9s ease-in-out infinite;
+
+  z-index: 0;
+}
+
+
+
+
+/* ===================== SECTION BASE ===================== */
+.sold-wall {
+  padding: 8rem 0;
+  background: linear-gradient(180deg, #07090d, #0b0e14);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===================== HEADER ===================== */
+.sold-wall-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.sold-wall-header h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+.sold-filters {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: #fff;
+  font-weight: 500;
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: rgba(31,107,255,0.2);
+  border-color: rgba(31,107,255,0.6);
+  color: #1f6bff;
+  transform: scale(1.05);
+}
+
+/* ===================== GRID ===================== */
+/* ===================== SOLD CARDS - NEXT GEN ===================== */
+.sold-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1200px; /* gives 3D pop effect */
+}
+
+/* Card base */
+.sold-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px) saturate(180%);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.3),
+    0 0 10px rgba(31,107,255,0.2),
+    0 8px 20px rgba(0,229,255,0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
   position: relative;
 }
 
-.dropdown {
-  position: absolute;
-  top: 140%;
-  left: 0;
-  background: #0f131b;
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 0.8rem 0;
-  min-width: 180px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.2s ease;
+/* Card hover effect */
+.sold-card:hover {
+  transform: translateY(-10px) rotateX(2deg) rotateY(3deg);
+  box-shadow: 
+    0 12px 24px rgba(0,0,0,0.4),
+    0 0 20px rgba(31,107,255,0.5),
+    0 0 40px rgba(0,229,255,0.3);
 }
 
-.has-dropdown:hover .dropdown {
+/* Car image */
+.sold-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.5s ease;
+}
+
+.sold-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Info overlay panel */
+.sold-card-info {
+  padding: 1rem 1.2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 2;
+}
+
+.sold-card-info h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Price and date */
+.sold-card-info p {
+  font-size: 1rem;
+  margin: 0.2rem 0;
+  color: #d0d0d0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Rare badge */
+.sold-card[data-rare="yes"]::before {
+  content: "🔥 RARE";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(45deg, #ff4d4d, #ffb84d);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #ff4d4d, 0 0 15px #ffb84d;
+  z-index: 5;
+  text-transform: uppercase;
+}
+
+/* Card micro animation on load (staggered) */
+.sold-card.show {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: cardAppear 0.6s forwards;
+}
+
+@keyframes cardAppear {
+  0% { opacity: 0; transform: translateY(30px) rotateX(3deg); }
+  70% { opacity: 1; transform: translateY(-5px) rotateX(1deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+/* Optional: subtle glowing borders for high-end feel */
+.sold-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(31,107,255,0.3), 0 0 40px rgba(0,229,255,0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.sold-card:hover::after {
   opacity: 1;
-  pointer-events: auto;
+}
+
+/* Fullscreen modal - hidden by default */
+.sold-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* <-- hide it */
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  overflow-y: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+/* When active, show it */
+.sold-modal.active {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
+
+
+
+/* ===================== PREMIUM FULLSCREEN MODAL ===================== */
+.sold-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* hidden initially */
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.95) 100%);
+  z-index: 9999;
+  overflow-y: auto;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+}
+
+.sold-modal.active {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===================== MODAL CONTENT ===================== */
+.sold-modal-content {
+  background: linear-gradient(145deg, #0b0e14, #12151e);
+  border-radius: 32px;
+  width: 90%;
+  max-width: 1300px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 60px rgba(31,107,255,0.2);
+  overflow: hidden;
+  position: relative;
+  transform: translateY(-30px);
+  transition: transform 0.5s ease;
+}
+
+.sold-modal.active .sold-modal-content {
   transform: translateY(0);
 }
 
-.dropdown li a {
-  display: block;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+/* ===================== LEFT IMAGE PANEL ===================== */
+.sold-modal-image-container {
+  flex: 1.1;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  transition: all 0.5s ease;
 }
+
+.sold-modal-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.sold-modal-image-container:hover img {
+  transform: scale(1.07) rotateZ(0.5deg);
+}
+
+/* ===================== RIGHT INFO PANEL ===================== */
+.sold-modal-details {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sold-modal-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #1f6bff;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+}
+
+.sold-modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+
+.sold-modal-info-grid div {
+  background: linear-gradient(145deg, rgba(31,107,255,0.1), rgba(0,0,0,0.2));
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: inset 0 0 10px rgba(31,107,255,0.15), 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
+}
+
+.sold-modal-info-grid div:hover {
+  background: linear-gradient(145deg, rgba(31,107,255,0.3), rgba(0,0,0,0.3));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(31,107,255,0.4);
+}
+
+/* ===================== SOCIAL SHARE ===================== */
+.sold-modal-share {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.sold-modal-share button {
+  background: linear-gradient(135deg, #1f6bff, #3a8dff);
+  border: none;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(31,107,255,0.4);
+}
+
+.sold-modal-share button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(31,107,255,0.6);
+}
+
+/* ===================== MODAL TOP BAR ===================== */
+.sold-modal-top {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.sold-close {
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #0f1620, #1f2535);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+.sold-close:hover {
+  background: #1f6bff;
+  transform: scale(1.15);
+  color: #fff;
+}
+
+/* NAV BUTTONS */
+.sold-modal-nav button {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #0f1620, #1f2535);
+  border: none;
+  border-radius: 14px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+.sold-modal-nav button:hover {
+  background: #1f6bff;
+  transform: scale(1.1);
+}
+
+
+
+
+
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,7,10,0.95);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.zoom-overlay.active {
+  display: flex;
+  animation: zoomFadeIn 0.4s ease forwards;
+}
+
+.zoom-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+.zoom-overlay img:hover {
+  transform: scale(1.05);
+}
+
+.zoom-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.zoom-close:hover {
+  opacity: 1;
+}
+
+@keyframes zoomFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.sold-modal-image-container{
+  cursor:pointer;
+}
+
+
+/* ======================================================
+   LUXURY STATS SECTION
+====================================================== */
+
+.stats-section {
+  margin: 6rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Card */
+.stat-card {
+  position: relative;
+  padding: 2.6rem 2rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Subtle glow */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    400px circle at 50% 0%,
+    rgba(52, 152, 219, 0.18),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Number */
+.stat-value {
+  display: block;
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Label */
+.stat-label {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+  .stats-section {
+    margin: 4rem 0;
+  }
+}
+
+
+
 
 
 

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <title data-i18n="hero.title">BMW X5 აუქციონების პლატფორმა</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/auctions.css" />
+</head>
+<body>
+
+<div id="header-root"></div>
+
+<main class="auctions-layout">
+
+ <aside class="filters-panel">
+  <div class="filter-header">
+    <h2 data-i18n="filters.title">ფილტრები</h2>
+    <button id="resetFilters" class="reset-link" data-i18n="filters.reset">
+      გასუფთავება
+    </button>
+  </div>
+
+  <div class="filter-section">
+    <label data-i18n="filters.status">სტატუსი</label>
+    <select id="filterStatus">
+      <option value="all" data-i18n="filter.all">ყველა</option>
+      <option value="live">Live</option>
+      <option value="upcoming">Upcoming</option>
+      <option value="sold">Sold</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <label data-i18n="filters.year">წელი</label>
+    <select id="filterYear">
+      <option value="all" data-i18n="filter.all">ყველა</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2018">2018</option>
+      <option value="2014">2014</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <label data-i18n="filters.fuel">საწვავი</label>
+    <select id="filterFuel">
+      <option value="all" data-i18n="filter.all">ყველა</option>
+      <option value="petrol">Petrol</option>
+      <option value="diesel">Diesel</option>
+      <option value="hybrid">Hybrid</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <label data-i18n="filters.damage">დაზიანება</label>
+    <select id="filterDamage">
+      <option value="all" data-i18n="filter.all">ყველა</option>
+      <option value="front">Front</option>
+      <option value="rear">Rear</option>
+      <option value="side">Side</option>
+      <option value="none">None</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <label data-i18n="filters.price">ფასის დიაპაზონი (€)</label>
+    <div class="price-options">
+      <button class="price-option" data-min="0" data-max="5000">0 – 5K</button>
+      <button class="price-option" data-min="5000" data-max="10000">5K – 10K</button>
+      <button class="price-option" data-min="10000" data-max="20000">10K – 20K</button>
+      <button class="price-option" data-min="20000" data-max="30000">20K – 30K</button>
+      <button class="price-option" data-min="30000" data-max="999999">30K+</button>
+    </div>
+  </div>
+
+  <div class="filter-section custom-price">
+    <input type="number" id="customMin" placeholder="Min €">
+    <input type="number" id="customMax" placeholder="Max €">
+  </div>
+</aside>
+
+  <!-- AUCTIONS -->
+  <section class="auctions-list">
+
+    <!-- LIVE CAR -->
+    <article class="auction-row live" data-status="live" data-year="2014" data-fuel="diesel" data-damage="rear" data-price="4800" data-rare="no">
+      <div class="auction-left">
+        <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/4dd4c235331540daa3c255890a02abc2_hrs.jpg" alt="BMW X5 E70 2014">
+        <div class="auction-info">
+          <h3 data-i18n="sold.model">BMW X5 E70 2014</h3>
+          <p data-i18n="sold.details">VIN: WBAXXXXX111 • Diesel • Rear damage</p>
+          <p data-i18n="sold.mileage">Mileage: 165,000 km • Engine: 3.0L • Color: Black</p>
+          <p data-i18n="auction.bmw">Auction: Jan 28, 2026</p>
+        </div>
+      </div>
+      <div class="auction-actions">
+        <div class="price">€4,800</div>
+        <button class="bid-btn" data-i18n="bid.now">Bid Now</button>
+      </div>
+    </article>
+
+    <!-- UPCOMING CAR -->
+    <article class="auction-row upcoming" data-status="upcoming" data-year="2018" data-fuel="petrol" data-damage="front" data-price="9200" data-rare="yes">
+      <div class="auction-left">
+        <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/90d5c660d86649d8861679935a4822b9_hrs.jpg" alt="BMW X5 F15 2018">
+        <div class="auction-info">
+          <h3 data-i18n="sold.model">BMW X5 F15 2018 <span style="color:#ff7700;" data-i18n="filter.rare">Rare 🔥</span></h3>
+          <p data-i18n="sold.details">VIN: WBAXXXXX222 • Petrol • Front damage</p>
+          <p data-i18n="sold.mileage">Mileage: 98,000 km • Engine: 3.0L • Color: White</p>
+          <p data-i18n="x30.auction">Auction: Feb 2, 2026</p>
+        </div>
+      </div>
+      <div class="auction-actions">
+        <div class="price">€9,200</div>
+        <button class="bid-btn" disabled style="opacity:0.5; cursor:not-allowed" data-i18n="bid.upcoming">Upcoming Lot</button>
+      </div>
+    </article>
+
+    <!-- Add more cars similarly (at least 10 with live/upcoming mix, rare badges, realistic prices) -->
+    <!-- Example: BMW X5 G05 2023 -->
+<article class="auction-row live" 
+         data-status="live" 
+         data-year="2023" 
+         data-fuel="hybrid" 
+         data-damage="none" 
+         data-price="24800" 
+         data-rare="no">
+  
+  <div class="auction-left">
+    <div class="car-slider">
+      <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/712a9f3a71b54122a6ad437945e03c2e_hrs.jpg" alt="BMW X5 G05 2023">
+      <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/af6e96e21d334c26baed599f9634c0dd_ful.jpg">
+      <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/46b05d2b0731458baa0ebe7d7ab36935_ful.jpg" alt="BMW X5 G05 2023">
+      
+      <button class="slider-btn left">&#10094;</button>
+      <button class="slider-btn right">&#10095;</button>
+    </div>
+    <div class="auction-info">
+      <h3>BMW X5 G05 2023</h3>
+      <p>VIN: WBAXXXXX333 • Hybrid • Clean</p>
+      <p>Mileage: 12,000 km • Engine: 3.0L • Color: Grey</p>
+      <p>Auction: Jan 30, 2026</p>
+    </div>
+  </div>
+
+  <div class="auction-actions">
+    <div class="price">€24,800</div>
+    <button class="bid-btn">Bid Now</button>
+  </div>
+
+</article>
+
+
+    <div class="empty-state" id="emptyState" hidden>
+      <h3 data-i18n="filter.all">ვერ მოიძებნა შედეგი</h3>
+      <p data-i18n="filters.title">შეცვალეთ ფილტრები</p>
+    </div>
+
+  </section>
+</main>
+
+<div id="footer-root"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <title>შესვლა | BMW X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/header.css">
+
+  <!-- Page specific -->
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+  <!-- HEADER (loaded dynamically) -->
+  <div id="header-placeholder"></div>
+
+  <!-- LOGIN CONTENT -->
+  <main class="login-page">
+    <div class="login-card">
+      <h1 data-i18n="auth.login">შესვლა</h1>
+
+      <form>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+
+        <button type="submit" class="btn btn-primary">
+          შესვლა
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scripts (ORDER MATTERS) -->
+  <script src="js/main.js"></script>
+  <script src="js/loadHeader.js"></script>
+  
+</body>
+</html>
