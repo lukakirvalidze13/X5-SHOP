@@ -1,11 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BMW X | PREMIUM GIVEAWAY</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/auctions.css" />
+    <link rel="stylesheet" href="css/giveaways.css">
 </head>
-<body>
-    
+<body class="nl-dark-theme">
+    <div id="header-root"></div>
+
+    <main class="nl-main-container">
+        <div class="nl-status-header">
+            <div class="status-left">
+                <span class="pulse-red">●</span> LIVE_GIVEAWAY_ENCRYPTION_ACTIVE
+            </div>
+            <div class="status-right">
+                SERVER_ID: <span class="blue-text">MUNICH_DE_49</span> | ENTRIES: <span class="blue-text">14,209 / 15,000</span>
+            </div>
+        </div>
+
+        <section class="giveaway-master-hub">
+            <div class="hero-section">
+                <div class="vehicle-stage">
+                    <div class="stage-overlay"></div>
+                    <span class="rarity-badge">ULTIMATE PRIZE</span>
+                    <img src="https://www.bmw-m.com/content/dam/bmw/marketM/common/topics/magazine-article-pool/2021/m5-cs/bmw-m5-cs-stage-teaser-01.jpg" alt="M5 CS" class="main-vehicle-img">
+                    <div class="vehicle-title">
+                        <h1 class="glitch-text" data-text="BMW M5 CS 2024">BMW M5 CS 2024</h1>
+                        <div class="spec-pills">
+                            <span>V8 TWIN-TURBO</span>
+                            <span>627 HP</span>
+                            <span>CARBON PACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="requirements-panel">
+                    <div class="panel-header">GIVEAWAY_REQUIREMENTS</div>
+                    <div class="task-list">
+                        <a href="https://instagram.com/bmw" target="_blank" class="task-item">
+                            <div class="task-icon">📸</div>
+                            <div class="task-info">
+                                <label>INSTAGRAM_PROTOCOL</label>
+                                <p>Follow @BMW Official Page</p>
+                            </div>
+                            <div class="task-status">PENDING</div>
+                        </a>
+                        <div class="task-item">
+                            <div class="task-icon">🔗</div>
+                            <div class="task-info">
+                                <label>SYSTEM_SYNC</label>
+                                <p>Share this Giveaway to Story</p>
+                            </div>
+                            <div class="task-status">PENDING</div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-icon">🤖</div>
+                            <div class="task-info">
+                                <label>SECURITY_CHECK</label>
+                                <p>Human Verification Protocol</p>
+                            </div>
+                            <div class="task-status">VALID</div>
+                        </div>
+                    </div>
+
+                    <div class="countdown-footer">
+                        <label>ESTIMATED_TIME_TO_DRAW</label>
+                        <div id="timer" class="massive-timer">02:45:12</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-footer">
+                <div class="progress-bar-wrapper">
+                    <div class="nl-progress-bar massive">
+                        <div class="fill" style="width: 94%;"></div>
+                    </div>
+                </div>
+                <button class="nl-main-btn enter-btn" onclick="openModal('confirmModal')">
+                    ENTER_GIVEAWAY_SYSTEM
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="confirmModal" class="nl-modal-overlay">
+        <div class="nl-modal">
+            <div class="modal-header">
+                <span class="blue-text">VERIFICATION_REQUIRED</span>
+                <button onclick="closeModal('confirmModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Have you completed all the following requirements?</p>
+                <ul class="modal-list">
+                    <li>Follow @BMW on Instagram</li>
+                    <li>Shared Giveaway to your network</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" onclick="closeModal('confirmModal')">NO, GO BACK</button>
+                <button class="modal-btn primary" onclick="showSuccess()">YES, I COMPLETED ALL</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="nl-modal-overlay">
+        <div class="nl-modal success-style">
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <h2 class="blue-text">REGISTRATION_SUCCESS</h2>
+                <p>Your digital identity has been encrypted and entered into the drawing. Winner will be announced via System Terminal.</p>
+                <button class="modal-btn primary" onclick="closeModal('successModal')">ACKNOWLEDGE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/giveaways.js"></script>
 </body>
 </html>
