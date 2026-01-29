@@ -1,0 +1,313 @@
+/* --- NEVERLOSE LOGIN WINDOW --- */
+body, html {
+  height: 100%;
+  margin: 0;
+  background: #050505;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background Effects */
+.bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(61, 133, 255, 0.08) 0%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Window */
+.nl-window {
+  position: relative;
+  width: 900px;
+  height: 550px;
+  background: #0c0c0e;
+  border: 1px solid #1c1c1f;
+  display: flex;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+
+/* Sidebar */
+.nl-sidebar {
+  width: 300px;
+  /* background: #111114; */
+  background:url(https://images.alphacoders.com/948/948432.jpg);
+  background-position: center;
+  background-size: cover;
+  border-right: 1px solid #1c1c1f;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nl-logo { font-size: 32px; font-weight: 900; letter-spacing: -1px; }
+.nl-logo span { color: #3d85ff; text-shadow: 0 0 15px rgba(61, 133, 255, 0.5); }
+
+.status-online {
+  color: #00ff88;
+  font-size: 10px;
+  font-family: monospace;
+  display: block;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+/* Form Area */
+.nl-content {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nl-header h1 { font-size: 22px; margin-bottom: 8px; letter-spacing: 1px; }
+.nl-header p { font-size: 12px; color: #4a4a4f; margin-bottom: 40px; }
+
+.input-group { margin-bottom: 25px; }
+.input-group label {
+  display: block;
+  font-size: 10px;
+  color: #3d85ff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  width: 100%;
+  background: #08080a;
+  border: 1px solid #1c1c1f;
+  padding: 14px;
+  color: #fff;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus { border-color: #3d85ff; background: #0e0e11; }
+
+.nl-btn {
+  width: 100%;
+  padding: 15px;
+  background: #3d85ff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nl-btn:hover { background: #5094ff; box-shadow: 0 0 20px rgba(61, 133, 255, 0.4); }
+
+.form-options { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 25px; color: #6a6a70; }
+
+/* Scanline Animation */
+.scanline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(61, 133, 255, 0.1);
+  box-shadow: 0 0 10px #3d85ff;
+  animation: scan 4s linear infinite;
+  z-index: 100;
+}
+
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+
+/* --- WINDOW CLOSE BUTTON --- */
+.nl-window-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  color: #4a4a4f; /* ნაგულისხმევი მკრთალი ფერი */
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  transition: all 0.2s ease-in-out;
+  z-index: 1000; /* ყველაზე ზემოთ */
+  line-height: 1;
+}
+
+.nl-window-close:hover {
+  color: #ff4444; /* Neverlose-ის წითელი აქცენტი დახურვისას */
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+}
+
+
+/* Footer Link Styling */
+.nl-footer {
+    margin-top: auto;
+    font-size: 11px;
+    color: #4a4a4f;
+    border-top: 1px solid #1c1c1f;
+    padding-top: 20px;
+}
+
+#toggle-auth {
+    color: #3d85ff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 5px;
+    transition: 0.2s;
+}
+
+#toggle-auth:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #3d85ff;
+}
+
+/* Dual Column for Registration */
+.nl-dual-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Animation for switching forms */
+.fade-in {
+    animation: nlFadeIn 0.4s ease-out;
+}
+
+@keyframes nlFadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
+
+
+
+/* Recovery Specific */
+.nl-recovery-alert {
+    background: rgba(255, 174, 0, 0.05);
+    border-left: 2px solid #ffae00;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nl-recovery-alert p {
+    font-size: 10px;
+    color: #ffae00;
+    font-family: 'Consolas', monospace;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.nl-btn-warn {
+    background: #ffae00 !important;
+    color: #000 !important; /* შავი ტექსტი ყვითელ ფონზე უკეთ იკითხება */
+}
+
+.nl-btn-warn:hover {
+    background: #ffc400 !important;
+    box-shadow: 0 0 20px rgba(255, 174, 0, 0.3) !important;
+}
+
+/* Captcha Style */
+.nl-captcha-box {
+    display: flex;
+    gap: 10px;
+}
+
+.nl-captcha-box span {
+    background: #111114;
+    border: 1px solid #1c1c1f;
+    padding: 10px;
+    color: #3d85ff;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 3px;
+    user-select: none;
+}
+
+
+/* --- NEVERLOSE CHECKBOX SYSTEM --- */
+.nl-checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+/* დამალული ორიგინალი ინპუტი */
+.nl-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* მორგებული "ყუთი" */
+.nl-checkbox-box {
+    height: 14px;
+    width: 14px;
+    background-color: #08080a; /* ძალიან მუქი */
+    border: 1px solid #1c1c1f;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ტექსტის სტილი */
+.nl-label-text {
+    font-size: 10px;
+    color: #4a4a4f;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+/* Hover ეფექტი */
+.nl-checkbox-container:hover .nl-checkbox-box {
+    border-color: rgba(61, 133, 255, 0.5);
+}
+
+.nl-checkbox-container:hover .nl-label-text {
+    color: #eee;
+}
+
+/* როცა მონიშნულია (Checked State) */
+.nl-checkbox-container input:checked ~ .nl-checkbox-box {
+    background-color: #3d85ff;
+    border-color: #3d85ff;
+    box-shadow: 0 0 10px rgba(61, 133, 255, 0.4);
+}
+
+.nl-checkbox-container input:checked ~ .nl-label-text {
+    color: #3d85ff;
+}
+
+/* შიდა "Check" ნიშანი (პატარა თეთრი წერტილი ან მართკუთხედი) */
+.nl-checkbox-box:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.nl-checkbox-container input:checked ~ .nl-checkbox-box:after {
+    display: block;
+}

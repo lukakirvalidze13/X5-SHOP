@@ -57,9 +57,15 @@
         <div class="drawer-inner">
           <label>Vehicle Year</label>
           <select id="filterYear" class="nl-select">
-            <option value="all">ყველა</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
+              <option value="all">ყველა</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
           </select>
         </div>
       </div>
@@ -116,47 +122,214 @@
   </div>
 </aside>
 
-  <!-- AUCTIONS -->
+  <!-- AUCTIONS --> 
   <section class="auctions-list">
 
-    <!-- LIVE CAR -->
-    <article class="auction-row live" data-status="live" data-year="2014" data-fuel="diesel" data-damage="rear" data-price="4800" data-rare="no">
-      <div class="auction-left">
-        <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/4dd4c235331540daa3c255890a02abc2_hrs.jpg" alt="BMW X5 E70 2014">
-        <div class="auction-info">
-          <h3 data-i18n="sold.model">BMW X5 E70 2014</h3>
-          <p data-i18n="sold.details">VIN: WBAXXXXX111 • Diesel • Rear damage</p>
-          <p data-i18n="sold.mileage">Mileage: 165,000 km • Engine: 3.0L • Color: Black</p>
-          <p data-i18n="auction.bmw">Auction: Jan 28, 2026</p>
-        </div>
-      </div>
-      <div class="auction-actions">
-        <div class="price">€4,800</div>
-        <button class="bid-btn" data-i18n="bid.now">Bid Now</button>
-      </div>
-    </article>
+<article class="auction-row live" data-price="5200" data-damage="front" data-year="2024" data-fuel="petrol">
+  <div class="auction-left">
+    <div class="image-slider">
+      <button class="arrow-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+      <button class="arrow-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+      <img class="slide active" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/55449d8f59214a38bf1dc43a2c900850_hrs.jpg">
+      <img class="slide" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/3bee6f76170a4a3c935046e585558c9d_hrs.jpg">
+    </div>
+    <div class="auction-info">
+      <h3>BMW X5 G05 2024</h3>
+      <p>
+        <span data-i18n="car.vin">ვინ კოდი</span>: WBAXXXXX999 • 
+        <span data-i18n="fuel.petrol">ბენზინი</span> • 
+        <span data-i18n="damage.front">წინა დაზიანება</span>
+      </p>
+      <p>
+        <span data-i18n="car.mileage">გარბენი</span>: 45,000 კმ • 
+        <span data-i18n="car.engine">ძრავი</span>: 4.4L • 
+        <span data-i18n="car.color">ფერი</span>: <span data-i18n="color.white">თეთრი</span>
+      </p>
+    </div>
+  </div>
+  <div class="auction-actions">
+    <div class="price">€5,200</div>
+    <button class="bid-btn" data-i18n="btn.bid" onclick="openAuction(5200, 'https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/55449d8f59214a38bf1dc43a2c900850_hrs.jpg', 'BMW X5 G05 2024')">ფსონის დადება</button>
+  </div>
+</article>
 
-    <!-- UPCOMING CAR -->
-    <article class="auction-row upcoming" data-status="upcoming" data-year="2018" data-fuel="petrol" data-damage="front" data-price="9200" data-rare="yes">
-      <div class="auction-left">
-        <img src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/90d5c660d86649d8861679935a4822b9_hrs.jpg" alt="BMW X5 F15 2018">
-        <div class="auction-info">
-          <h3 data-i18n="sold.model">BMW X5 F15 2018 <span style="color:#ff7700;" data-i18n="filter.rare">Rare 🔥</span></h3>
-          <p data-i18n="sold.details">VIN: WBAXXXXX222 • Petrol • Front damage</p>
-          <p data-i18n="sold.mileage">Mileage: 98,000 km • Engine: 3.0L • Color: White</p>
-          <p data-i18n="x30.auction">Auction: Feb 2, 2026</p>
-        </div>
-      </div>
-      <div class="auction-actions">
-        <div class="price">€9,200</div>
-        <button class="bid-btn" disabled style="opacity:0.5; cursor:not-allowed" data-i18n="bid.upcoming">Upcoming Lot</button>
-      </div>
-    </article>
+<article class="auction-row live" data-price="12800" data-damage="rear" data-year="2023" data-fuel="diesel">
+  <div class="auction-left">
+    <div class="image-slider">
+      <button class="arrow-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+      <button class="arrow-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+      <img class="slide active" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/855e2d7e949940bb934fa072d511fc9c_hrs.jpg">
+      <img class="slide" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/8ac029f6fdf24b48aec2db580e9afcf7_hrs.jpg">
+    </div>
+    <div class="auction-info">
+      <h3>BMW X5 M-Sport 2023</h3>
+      <p>
+        <span data-i18n="car.vin">ვინ კოდი</span>: WBAZZZZZ111 • 
+        <span data-i18n="fuel.diesel">დიზელი</span> • 
+        <span data-i18n="damage.rear">უკანა დაზიანება</span>
+      </p>
+      <p>
+        <span data-i18n="car.mileage">გარბენი</span>: 12,000 კმ • 
+        <span data-i18n="car.engine">ძრავი</span>: 3.0L • 
+        <span data-i18n="car.color">ფერი</span>: <span data-i18n="color.black">შავი</span>
+      </p>
+    </div>
+  </div>
+  <div class="auction-actions">
+    <div class="price">€12,800</div>
+    <button class="bid-btn" data-i18n="btn.bid" onclick="openAuction(12800, 'https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/855e2d7e949940bb934fa072d511fc9c_hrs.jpg', 'BMW X5 M-Sport 2023')">ფსონის დადება</button>
+  </div>
+</article>
 
-    <!-- Add more cars similarly (at least 10 with live/upcoming mix, rare badges, realistic prices) -->
-    <!-- Example: BMW X5 G05 2023 -->
+<article class="auction-row live" data-price="10500" data-damage="rear" data-year="2023" data-fuel="diesel">
+  <div class="auction-left">
+    <div class="image-slider">
+      <button class="arrow-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+      <button class="arrow-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+      <img class="slide active" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8517dfa343fc48398d4425e12d2049f5_hrs.jpg">
+    </div>
+    <div class="auction-info">
+      <h3>BMW X5 M-Sport 2023 (Silver)</h3>
+      <p>
+        <span data-i18n="car.vin">ვინ კოდი</span>: WBAXXXXX777 • 
+        <span data-i18n="fuel.diesel">დიზელი</span> • 
+        <span data-i18n="damage.rear">უკანა დაზიანება</span>
+      </p>
+      <p>
+        <span data-i18n="car.mileage">გარბენი</span>: 28,500 კმ • 
+        <span data-i18n="car.engine">ძრავი</span>: 3.0L • 
+        <span data-i18n="car.color">ფერი</span>: <span data-i18n="color.silver">ვერცხლისფერი</span>
+      </p>
+    </div>
+  </div>
+  <div class="auction-actions">
+    <div class="price">€10,500</div>
+    <button class="bid-btn" data-i18n="btn.bid" onclick="openAuction(10500, 'https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8517dfa343fc48398d4425e12d2049f5_hrs.jpg', 'BMW X5 M-Sport 2023')">ფსონის დადება</button>
+  </div>
+</article>
 
+
+<article class="auction-row live" data-price="12800" data-damage="rear" data-year="2023" data-fuel="diesel">
+  <div class="auction-left">
+    <div class="image-slider">
+      <button class="arrow-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+      <button class="arrow-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+      <img class="slide active" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/21da16825c1c463c95a52746ba0d0517_ful.jpg">
+      <img class="slide" src="https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/ce60be388d804752b5df28065d804b2a_ful.jpg">
+    </div>
+    <div class="auction-info">
+      <h3>2022 BMW X5 M</h3>
+      <p>
+        <span data-i18n="car.vin">ვინ კოდი</span>: WBAZZZZZ111 • 
+        <span data-i18n="fuel.diesel">დიზელი</span> • 
+        <span data-i18n="damage.rear">უკანა დაზიანება</span>
+      </p>
+      <p>
+        <span data-i18n="car.mileage">გარბენი</span>: 12,000 კმ • 
+        <span data-i18n="car.engine">ძრავი</span>: 3.0L • 
+        <span data-i18n="car.color">ფერი</span>: <span data-i18n="color.black">შავი</span>
+      </p>
+    </div>
+  </div>
+  <div class="auction-actions">
+    <div class="price">€8,900</div>
+    <button class="bid-btn" data-i18n="btn.bid" onclick="openAuction(8900, 'https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/21da16825c1c463c95a52746ba0d0517_ful.jpg', 'BMW X5 M-Sport 2023')">ფსონის დადება</button>
+  </div>
+</article>
+
+
+<div id="auction-modal" class="nl-modal">
+  <div id="win-screen" class="nl-win-overlay">
+    <h1 style="color: #fff; font-size: 32px; margin-bottom: 10px; font-weight: 900;">ASSET SECURED</h1>
+    <p style="color: #3d85ff; letter-spacing: 2px; font-size: 12px; margin-bottom: 30px;">THE VEHICLE HAS BEEN ADDED TO YOUR GARAGE</p>
     
+    <img id="win-car-img" src="" class="win-car-preview">
+    
+    <button class="nl-btn primary" style="width: 200px;" onclick="collectAsset()">COLLECT</button>
+</div>
+    <div class="nl-container">
+        <div class="nl-sidebar">
+            <div class="nl-logo">BMW</div>
+            <nav>
+                <div class="nav-item active" onclick="switchTab('live', this)">Live</div>
+                <div class="nav-item" onclick="switchTab('specs', this)">Specs</div>
+                <div class="nav-item" onclick="switchTab('history', this)">History</div>
+            </nav>
+            <button class="nl-exit" onclick="closeAuction()">Exit</button>
+        </div>
+
+        <div class="nl-main">
+            <div id="tab-live" class="nl-tab-content">
+                <div class="nl-dashboard-grid">
+                    <div class="nl-panel vehicle-view">
+                        <div class="nl-img-box">
+                            <img id="modal-main-img" src="" alt="Vehicle Preview">
+                            <div class="nl-tag" id="modal-car-tag">G05 2024</div>
+                        </div>
+                        <div class="nl-details-quick">
+                            <div class="detail-line"><span>VIN Checker</span><span class="v-ok">CERTIFIED</span></div>
+                            <div class="detail-line"><span>Damage Level</span><span class="v-warn">MEDIUM</span></div>
+                            <div class="detail-line"><span>Est. Value</span><span>€14,500</span></div>
+                        </div>
+                    </div>
+
+                    <div class="nl-panel bidding-view">
+                        <div id="status-glow" class="nl-status winning">SYSTEM ACTIVE</div>
+                        <div class="nl-price-row">
+                            <div class="price-label">CURRENT BID</div>
+                            <div id="modal-price-display" class="nl-price-text">€5,200</div>
+                        </div>
+                        <div class="nl-timer-wrap">
+                            <div id="timer-text" class="nl-timer-digit">10s</div>
+                            <div class="nl-timer-bar-bg"><div id="timer-bar" class="nl-timer-bar-fill"></div></div>
+                        </div>
+                        <div class="nl-bid-grid">
+                            <button class="nl-btn" onclick="userBid(100)">+100</button>
+                            <button class="nl-btn" onclick="userBid(500)">+500</button>
+                            <button class="nl-btn primary" onclick="userBid(1000)">MONSTER BID</button>
+                        </div>
+                        <div class="nl-feed" id="history-log">
+                            <div class="feed-entry">Console initialized...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-specs" class="nl-tab-content" style="display:none;">
+                <div class="nl-panel" style="max-width: 600px; margin: 0 auto; color: white;">
+                    <h2 style="margin-bottom: 20px; color: #3d85ff;">Vehicle Specs</h2>
+                    <div class="detail-line"><span>Engine</span><span>4.4L V8 Petrol</span></div>
+                    <div class="detail-line"><span>Transmission</span><span>8-Speed Auto</span></div>
+                    <div class="detail-line"><span>Drivetrain</span><span>xDrive AWD</span></div>
+                    <div class="detail-line"><span>Horsepower</span><span>523 HP</span></div>
+                </div>
+            </div>
+
+            <div id="tab-history" class="nl-tab-content" style="display:none;">
+                <div class="nl-panel" style="max-width: 600px; margin: 0 auto; color: white;">
+                    <h2 style="margin-bottom: 20px; color: #3d85ff;">Ownership History</h2>
+                    <div class="detail-line"><span>Jan 2024</span><span>Manufactured</span></div>
+                    <div class="detail-line"><span>Mar 2024</span><span>First Registration</span></div>
+                    <div class="detail-line"><span>Oct 2025</span><span>Accident Reported</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <div class="empty-state" id="emptyState" hidden>

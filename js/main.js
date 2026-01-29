@@ -47,7 +47,26 @@ const translations = {
     "price.30plus": "30,000€+",
     "price.50plus": "50,000€+",
     "bid.now": "დაბიდვა",
-    "bid.upcoming": "მალე"
+    "bid.upcoming": "მალე",
+    "car.vin": "VIN",
+    "car.mileage": "გარბენი",
+    "car.fuel": "საწვავი",
+    "car.engine": "ძრავი",
+    "car.color": "ფერი",
+    "car.damage": "დაზიანება",
+    "damage.front": "წინა",
+    "damage.rear": "უკანა",
+    "damage.side": "გვერდითი",
+    "damage.none": "არა",
+    "fuel.petrol": "ბენზინი",
+    "fuel.diesel": "დიზელი",
+    "fuel.hybrid": "ჰიბრიდი",
+    "contact.placeholder.name": "ოპერატორის სახელი...",
+    "contact.placeholder.msg": "მონაცემთა პაკეტი...",
+    "contact.subject.tech": "ტექნიკური მხარდაჭერა",
+    "contact.subject.biz": "ბიზნეს შემოთავაზება",
+    "nav.modelss" : "ინფორმაცია",
+    "hero.ctaa" : "გაგზავნა"
   },
   en: {
     "logo": "BMWX",
@@ -96,7 +115,26 @@ const translations = {
     "price.30plus": "€30K+",
     "price.50plus": "€50K+",
     "bid.now": "Bid Now",
-    "bid.upcoming": "Upcoming"
+    "bid.upcoming": "Upcoming",
+    "car.vin": "VIN",
+    "car.mileage": "Mileage",
+    "car.fuel": "Fuel",
+    "car.engine": "Engine",
+    "car.color": "Color",
+    "car.damage": "Damage",
+    "damage.front": "Front",
+    "damage.rear": "Rear",
+    "damage.side": "Side",
+    "damage.none": "None",
+    "fuel.petrol": "Petrol",
+    "fuel.diesel": "Diesel",
+    "fuel.hybrid": "Hybrid",
+    "contact.placeholder.name": "Operator Identifier...",
+    "contact.subject.tech": "Technical Support",
+    "contact.subject.biz": "Business Inquiry",
+    "contact.placeholder.msg": "Enter data payload...",
+    "nav.modelss" : "Info",
+    "hero.ctaa" : "Send"
   }
 };
 
@@ -533,6 +571,439 @@ document.addEventListener('click', (e) => {
       d.parentElement.querySelector('.value-btn').classList.remove('active');
     });
   }
+});
+
+
+let currentSlideIndex = 0;
+
+function moveSlide(buttonElement, step) {
+    // 1. Find the specific container this button belongs to
+    const container = buttonElement.parentElement;
+    
+    // 2. Find all images inside THIS container
+    const slides = container.querySelectorAll('.slide');
+    
+    // 3. Find the index of the currently active image
+    let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+
+    // 4. Remove active class from the current image
+    slides[activeIndex].classList.remove('active');
+
+    // 5. Calculate new index (Looping logic)
+    activeIndex += step;
+    if (activeIndex >= slides.length) {
+        activeIndex = 0;
+    } else if (activeIndex < 0) {
+        activeIndex = slides.length - 1;
+    }
+
+    // 6. Show the new image
+    slides[activeIndex].classList.add('active');
+}
+
+
+
+
+
+// 1. Global State (Think of these as your Private Class Members)
+let currentBid = 0;
+let auctionTimer = null; // Using one name for the interval
+let timeLeft = 10;
+let isWinning = false;
+const botNames = ["CyberBimmer", "MunichSpec", "BavarianBot", "X5_Lover"];
+
+// 2. Open Auction
+function openAuction(price, imgPath, modelName) {
+    currentBid = Number(price);
+    timeLeft = 10;
+    isWinning = false;
+
+    // Show Modal
+    const modal = document.getElementById('auction-modal');
+    if (modal) modal.style.display = 'block';
+
+    // Update UI Elements
+    const mainImg = document.getElementById('modal-main-img');
+    const winImg = document.getElementById('win-car-img');
+    if (mainImg) mainImg.src = imgPath;
+    if (winImg) winImg.src = imgPath;
+
+    document.getElementById('modal-car-tag').innerText = modelName;
+    updatePriceUI();
+    
+    // Initial Log
+    const log = document.getElementById('history-log');
+    log.innerHTML = `<div class="feed-entry">System ready...</div>`;
+    addLog(`Target: ${modelName} identified.`);
+
+    resetTimer(); // Start the clock
+}
+
+// 3. Bidding Logic (Unified)
+function userBid(amount) {
+    currentBid += amount;
+    isWinning = true;
+    updateStatus("WINNING");
+    updatePriceUI();
+    resetTimer();
+    addLog(`USER placed bid: +€${amount}`, "#3d85ff");
+    
+    // Bot reaction logic
+    setTimeout(botReaction, 1500 + Math.random() * 2000);
+}
+
+function botReaction() {
+    // Only react if the user is currently winning and modal is open
+    const modalOpen = document.getElementById('auction-modal').style.display === 'block';
+    if (modalOpen && isWinning && Math.random() > 0.4) { 
+        const bidIncrease = 100;
+        currentBid += bidIncrease;
+        isWinning = false;
+        updateStatus("OUTBID");
+        updatePriceUI();
+        resetTimer();
+        
+        const randomBot = botNames[Math.floor(Math.random() * botNames.length)];
+        addLog(`${randomBot} placed bid: +€${bidIncrease}`, "#ff4444");
+    }
+}
+
+// 4. UI Helper Functions
+function updatePriceUI() {
+    const formatted = "€" + currentBid.toLocaleString();
+    const display = document.getElementById('modal-price-display');
+    
+    if (display) {
+        display.innerText = formatted;
+        
+        // Neverlose "Data Injection" Animation
+        display.style.transition = "none";
+        display.style.color = "#fff";
+        display.style.textShadow = "0 0 15px #3d85ff"; // Bright pulse
+        
+        setTimeout(() => {
+            display.style.transition = "all 0.4s ease";
+            display.style.textShadow = "none";
+            // If outbid, turn price dim red; if winning, keep it bright
+            display.style.color = isWinning ? "#3d85ff" : "#ff4444";
+        }, 50);
+    }
+}
+
+function updateStatus(state) {
+    const statusBox = document.getElementById('status-glow');
+    if (!statusBox) return;
+
+    if (state === "WINNING") {
+        statusBox.className = "nl-status winning";
+        statusBox.innerText = "> STATUS: HIGHEST_BIDDER";
+    } else {
+        statusBox.className = "nl-status outbid";
+        statusBox.innerText = "> STATUS: OUTBID_BY_EXTERNAL_SOURCE";
+    }
+}
+
+function addLog(message, color = "#888") {
+    const log = document.getElementById('history-log');
+    const entry = document.createElement('div');
+    entry.className = "feed-entry";
+    
+    // Add a terminal-style prefix
+    const timestamp = new Date().toLocaleTimeString([], { hour12: false });
+    entry.innerHTML = `<span style="color: #444;">[${timestamp}]</span> <span style="color: ${color}">${message}</span>`;
+    
+    log.prepend(entry);
+    
+    // Simple NL fade-in animation via JS
+    entry.style.opacity = "0";
+    entry.style.transform = "translateX(-10px)";
+    setTimeout(() => {
+        entry.style.transition = "all 0.2s ease";
+        entry.style.opacity = "1";
+        entry.style.transform = "translateX(0)";
+    }, 10);
+}
+
+// 5. Timer & Win/Loss Logic
+function resetTimer() {
+    clearInterval(auctionTimer);
+    timeLeft = 10;
+    
+    const timerText = document.getElementById('timer-text');
+    const timerBar = document.getElementById('timer-bar');
+
+    auctionTimer = setInterval(() => {
+        timeLeft--;
+        if (timerText) timerText.innerText = timeLeft + "s";
+        if (timerBar) timerBar.style.width = (timeLeft * 10) + "%";
+
+        if (timeLeft <= 0) {
+            clearInterval(auctionTimer);
+            finishAuction();
+        }
+    }, 1000);
+}
+
+function finishAuction() {
+    if (isWinning) {
+        document.getElementById('win-screen').style.display = 'flex';
+        addLog("CRITICAL: Asset ownership transferred to USER.", "#00ff88");
+    } else {
+        alert("OUTBID: Connection lost to bidding server.");
+        closeAuction();
+    }
+}
+
+// 6. Navigation & Utility
+function switchTab(tabId, element) {
+    document.querySelectorAll('.nl-tab-content').forEach(t => t.style.display = 'none');
+    document.getElementById('tab-' + tabId).style.display = 'block';
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    element.classList.add('active');
+}
+
+function closeAuction() {
+    document.getElementById('auction-modal').style.display = 'none';
+    document.getElementById('win-screen').style.display = 'none';
+    clearInterval(auctionTimer);
+}
+
+function collectAsset() {
+    // 1. Play a "Success" pulse on the win screen before closing
+    const winBox = document.querySelector('.nl-win-overlay');
+    winBox.style.transition = "all 0.5s ease";
+    winBox.style.filter = "brightness(2) blur(10px)";
+    winBox.style.opacity = "0";
+
+    setTimeout(() => {
+        // 2. Close the modal
+        closeAuction();
+        
+        // 3. Update the main page card to show "OWNED"
+        // This finds the button you clicked to open the auction
+        const allButtons = document.querySelectorAll('.bid-btn');
+        allButtons.forEach(btn => {
+            // If the price matches what we just 'won', mark it as owned
+            if (btn.innerText !== "OWNED" && btn.previousElementSibling.innerText.includes(currentBid.toLocaleString())) {
+                btn.innerText = "OWNED";
+                btn.style.background = "rgba(0, 255, 136, 0.1)";
+                btn.style.color = "#00ff88";
+                btn.style.border = "1px solid #00ff88";
+                btn.disabled = true;
+                btn.style.cursor = "default";
+            }
+        });
+
+        // 4. Reset the win box for next time
+        winBox.style.filter = "none";
+        winBox.style.opacity = "1";
+    }, 500);
+}
+
+
+
+document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    
+    // ღილაკის ტექსტის შეცვლა (C++ style logic: state change)
+    btn.innerText = "AUTHENTICATING...";
+    btn.style.opacity = "0.7";
+    btn.disabled = true;
+
+    // 1.5 წამში გადაყვანა მთავარ გვერდზე
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1500);
+});
+
+
+
+
+
+function toggleAuthMode() {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const toggleBtn = document.getElementById('toggle-auth');
+    const switchText = document.getElementById('switch-text');
+    const headerTitle = document.querySelector('.nl-header h1');
+
+    if (loginForm.style.display !== 'none') {
+        // გადართვა რეგისტრაციაზე
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        registerForm.classList.add('fade-in');
+        
+        headerTitle.innerText = 'CREATE_NEW_IDENTITY';
+        switchText.innerText = 'Already have a license?';
+        toggleBtn.innerText = 'Back to Login';
+    } else {
+        // გადართვა ლოგინზე
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        loginForm.classList.add('fade-in');
+        
+        headerTitle.innerText = 'LOGIN_SESSION';
+        switchText.innerText = "Don't have an active license?";
+        toggleBtn.innerText = 'Create Account';
+    }
+}
+
+// ფორმის გაგზავნის სიმულაცია (რეგისტრაციისთვის)
+document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.innerText = "REGISTERING_UNIT...";
+    
+    setTimeout(() => {
+        alert("Account Created! Please Login.");
+        toggleAuthMode(); // ვაბრუნებთ ლოგინზე
+    }, 2000);
+});
+
+
+
+
+// State Manager
+function showForm(mode) {
+    const forms = {
+        login: document.getElementById('loginForm'),
+        register: document.getElementById('registerForm'),
+        recovery: document.getElementById('recoveryForm')
+    };
+    
+    const headerTitle = document.querySelector('.nl-header h1');
+    const footerText = document.getElementById('switch-text');
+    const toggleBtn = document.getElementById('toggle-auth');
+
+    // ყველა ფორმის დამალვა
+    Object.values(forms).forEach(f => {
+        if(f) f.style.display = 'none';
+    });
+
+    // კონკრეტული ფორმის ჩვენება
+    if (mode === 'register') {
+        forms.register.style.display = 'block';
+        headerTitle.innerText = 'CREATE_NEW_IDENTITY';
+        footerText.innerText = 'Already have a license?';
+        toggleBtn.innerText = 'Back to Login';
+        toggleBtn.onclick = () => showForm('login');
+    } 
+    else if (mode === 'recovery') {
+        forms.recovery.style.display = 'block';
+        headerTitle.innerText = 'ACCESS_RECOVERY_MODE';
+        footerText.innerText = 'Remembered your key?';
+        toggleBtn.innerText = 'Back to Login';
+        toggleBtn.onclick = () => showForm('login');
+    } 
+    else {
+        forms.login.style.display = 'block';
+        headerTitle.innerText = 'LOGIN_SESSION';
+        footerText.innerText = "Don't have an active license?";
+        toggleBtn.innerText = 'Create Account';
+        toggleBtn.onclick = () => showForm('register');
+    }
+}
+
+// დააკავშირე "Lost Access?" ლინკი
+document.querySelector('.nl-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    showForm('recovery');
+});
+
+// ფორმის გაგზავნის სიმულაცია
+document.getElementById('recoveryForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.innerText = "SENDING_RESTORE_LINK...";
+    
+    setTimeout(() => {
+        alert("If the email exists, a reset link has been dispatched.");
+        showForm('login');
+    }, 2000);
+});
+
+/**
+ * BMW X - Next-Gen Module Controller
+ */
+
+// 1. ტაბების გადართვის ფუნქცია (უსაფრთხო სახელით)
+function switchContactModule(tabId) {
+    const activeTab = document.getElementById(`tab-${tabId}`);
+    if (!activeTab) return; 
+
+    // აქტიური კლასების გასუფთავება
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nl-tab-btn').forEach(b => b.classList.remove('active'));
+
+    // ახალი ტაბის და ღილაკის გააქტიურება
+    activeTab.classList.add('active');
+    if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+    }
+
+    // პროგრეს ბარების რე-ანიმაცია Info ტაბზე გადასვლისას
+    if (tabId === 'info') {
+        const bars = activeTab.querySelectorAll('.fill');
+        bars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-width') || bar.style.width; 
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = targetWidth;
+            }, 150);
+        });
+    }
+    
+    // სისტემური ლოგი (სურვილისამებრ)
+    console.log(`[SYS] MODULE_MOUNTED: ${tabId.toUpperCase()}`);
+}
+
+// 2. Placeholder-ების და ტექსტების თარგმნის ლოგიკა
+function updateI18N(lang) {
+    // ჩვეულებრივი ტექსტები
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        // აქ უნდა იყოს შენი translations ობიექტიდან წამოღებული ტექსტი
+        // if (translations[lang][key]) el.innerText = translations[lang][key];
+    });
+
+    // პლეისჰოლდერები
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        // el.setAttribute('placeholder', translations[lang][key]);
+    });
+}
+
+// 3. ფორმის გაგზავნის სიმულაცია
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.nl-main-btn');
+    const originalText = btn.innerHTML;
+
+    // "Next-Gen" გაგზავნის ეფექტი
+    btn.style.opacity = '0.7';
+    btn.innerHTML = '<span class="pulse">ENCRYPTING...</span>';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        btn.innerHTML = '<span style="color: #50ffaf;">SUCCESS_SENT</span>';
+        
+        // 3 წამში აბრუნებს საწყის მდგომარეობას
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.opacity = '1';
+            btn.disabled = false;
+            this.reset();
+        }, 3000);
+    }, 1500);
+});
+
+// 4. საწყისი ინიციალიზაცია
+document.addEventListener('DOMContentLoaded', () => {
+    // ვრთავთ პირველად ანიმაციას თუ Info ტაბი ღიაა
+    if (document.getElementById('tab-info').classList.contains('active')) {
+        switchContactModule('info');
+    }
 });
 
 

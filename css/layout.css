@@ -119,6 +119,64 @@
   font-size: 0.8rem;
 }
 
+/* NEVERLOSE NAVIGATION BUTTON */
+.nl-btn-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    /* background: rgba(61, 133, 255, 0.05); ძალიან მკრთალი ლურჯი */
+    border: 1px solid rgba(61, 133, 255, 0.2);
+    color: #3d85ff;
+    text-decoration: none;
+    font-family: 'Consolas', 'Monaco', monospace; /* ტექნოლოგიური შრიფტი */
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 9px;
+}
+
+.nl-btn-icon {
+    font-size: 10px;
+    filter: grayscale(1) brightness(1.5);
+}
+
+/* Hover Effect */
+.nl-btn-nav:hover {
+    background: rgba(61, 133, 255, 0.15);
+    border-color: #3d85ff;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(61, 133, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Active / Click Effect */
+.nl-btn-nav:active {
+    transform: scale(0.95);
+    background: #3d85ff;
+    color: #000;
+}
+
+/* პატარა დეკორატიული ელემენტი (NL Signature) */
+.nl-btn-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 0%;
+    background: #365487;
+    transition: 0.2s;
+}
+
+.nl-btn-nav:hover::after {
+    height: 100%;
+}
+
 /* =========================
    MOBILE ADAPTATION
 ========================= */

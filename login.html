@@ -2,42 +2,99 @@
 <html lang="ka">
 <head>
   <meta charset="UTF-8">
-  <title>შესვლა | BMW X</title>
+  <title>BMW X | AUTHORIZATION</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Global styles -->
+  
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/header.css">
-
-  <!-- Page specific -->
   <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
 
-  <!-- HEADER (loaded dynamically) -->
-  <div id="header-placeholder"></div>
+  <div class="bg-animation"></div>
+  <div class="bg-glow"></div>
 
-  <!-- LOGIN CONTENT -->
-  <main class="login-page">
-    <div class="login-card">
-      <h1 data-i18n="auth.login">შესვლა</h1>
+  <main class="nl-window">
+    <a href="index.html" class="nl-window-close" title="Terminate Session">×</a>
+    <div class="scanline"></div>
 
-      <form>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
+    <aside class="nl-sidebar">
+      <div class="nl-logo">BMW<span>X</span></div>
+      
+      <div class="nl-sidebar-footer">
+        <span class="system-status">Authorization Terminal</span>
+        <span class="status-online">● SYSTEM_SECURED</span>
+      </div>
+    </aside>
 
-        <button type="submit" class="btn btn-primary">
-          შესვლა
-        </button>
-      </form>
+ <section class="nl-content">
+  <header class="nl-header">
+    <h1 id="auth-title">LOGIN_SESSION</h1>
+    <p id="auth-subtitle">Identify yourself to access the private database.</p>
+  </header>
+
+  <form id="loginForm" class="nl-form">
+    <div class="input-group">
+      <label>User Identifier (Email)</label>
+      <input type="email" id="email" placeholder="operator@bmwx.ge" required>
     </div>
+
+    <div class="input-group">
+      <label>Access Key (Password)</label>
+      <input type="password" id="password" placeholder="••••••••" required>
+    </div>
+
+    <div class="form-options">
+<label class="nl-checkbox-container">
+  <input type="checkbox">
+  <span class="nl-checkbox-box"></span>
+  <span class="nl-label-text">REMEMBER_DEVICE</span>
+</label>
+      <a href="javascript:void(0)" class="nl-link" onclick="showForm('recovery')">Lost Access?</a>
+    </div>
+
+    <button type="submit" class="nl-btn">Execute Authentication</button>
+  </form>
+
+  <form id="registerForm" class="nl-form" style="display: none;">
+    <div class="nl-dual-layout">
+      <div class="input-group">
+        <label>ACCESS_NAME</label>
+        <input type="text" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <label>INVITE_CODE</label>
+        <input type="text" placeholder="NL-XXXX-XXXX" required>
+      </div>
+    </div>
+    <div class="input-group">
+      <label>EMAIL_ADDRESS</label>
+      <input type="email" placeholder="operator@bmwx.ge" required>
+    </div>
+    <div class="input-group">
+      <label>NEW_ACCESS_KEY</label>
+      <input type="password" placeholder="••••••••" required>
+    </div>
+    <button type="submit" class="nl-btn">INITIALIZE_REGISTRATION</button>
+  </form>
+
+  <form id="recoveryForm" class="nl-form" style="display: none;">
+    <div class="nl-recovery-alert">
+      <p>ACCOUNT_RECOVERY_PROTOCOL_INITIATED. ENTER REGISTERED EMAIL TO RECEIVE RESET_KEY.</p>
+    </div>
+    <div class="input-group">
+      <label>REGISTERED_EMAIL_ADDRESS</label>
+      <input type="email" placeholder="operator@bmwx.ge" required>
+    </div>
+    <button type="submit" class="nl-btn nl-btn-warn">REQUEST_ACCESS_RESET</button>
+  </form>
+
+  <footer class="nl-footer">
+    <span id="switch-text">Don't have an active license?</span> 
+    <a href="javascript:void(0)" id="toggle-auth" onclick="showForm('register')">Create Account</a>
+  </footer>
+</section>
   </main>
 
-  <!-- Scripts (ORDER MATTERS) -->
   <script src="js/main.js"></script>
-  <script src="js/loadHeader.js"></script>
-  
 </body>
 </html>

@@ -1,0 +1,385 @@
+:root {
+    --nl-bg: #050505;
+    --nl-panel: #0c0c0e;
+    --nl-sidebar: #111114;
+    --nl-accent: #3d85ff;
+    --nl-border: #1c1c1f;
+    --nl-text: #ffffff;
+    --nl-text-dim: #4a4a4f;
+}
+
+body {
+    background: var(--nl-bg);
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--nl-text);
+}
+
+.nl-viewport {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* NL Glow Effect */
+.nl-bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(61,133,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.nl-window {
+    width: 100%; height: 100%;  
+    background: var(--nl-panel);
+    border: 1px solid var(--nl-border);
+    display: flex;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+    z-index: 10;
+}
+
+.nl-sidebar {
+    width: 220px;
+    background: url('https://mediacloud.carbuyer.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1715340693/carbuyer/2024/05/BMW%20X5%20Carbuyer%20review-21.jpg');
+    background-size: cover;
+    /* შეცვალე პროცენტი მანამ, სანამ ზუსტად იმ ადგილს არ დაიჭერ, რომელიც გინდა */
+    background-position: 62% center; 
+    border-right: 1px solid var(--nl-border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    color: black;
+}
+
+.nl-logo { font-size: 26px; font-weight: 900; padding: 0 30px; margin-bottom: 40px; }
+.nl-logo span { color: var(--nl-accent); }
+
+.nav-label { font-size: 9px; color: var(--nl-text-dim); padding: 0 30px; margin-bottom: 10px; font-weight: bold; }
+
+.nl-nav-item {
+    padding: 12px 30px;
+    color: var(--nl-text-dim);
+    cursor: pointer;
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.nl-nav-item:hover { color: #fff; background: rgba(255,255,255,0.02); }
+.nl-nav-item.active {
+    color: #fff;
+    border-left: 2px solid var(--nl-accent);
+    background: linear-gradient(90deg, rgba(61,133,255,0.1) 0%, transparent 100%);
+}
+
+/* Content & Tabs */
+.nl-content-area { flex: 1; padding: 35px; }
+.tab-pane { display: none; animation: fadeIn 0.3s ease; }
+.tab-pane.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Neverlose Groupbox */
+.nl-group {
+    border: 1px solid var(--nl-border);
+    padding: 25px 20px;
+    position: relative;
+    background: rgba(255,255,255,0.01);
+}
+
+.nl-group-label {
+    position: absolute;
+    top: -8px; left: 12px;
+    background: var(--nl-panel);
+    padding: 0 8px;
+    color: var(--nl-accent);
+    font-size: 10px;
+    font-weight: 900;
+}
+
+/* Forms */
+.nl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.nl-field { margin-bottom: 15px; }
+.nl-field label { display: block; font-size: 9px; color: var(--nl-text-dim); margin-bottom: 8px; }
+
+input, select, textarea {
+    width: 100%;
+    background: #08080a;
+    border: 1px solid var(--nl-border);
+    padding: 12px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+}
+
+input:focus, textarea:focus { border-color: var(--nl-accent); }
+textarea { height: 150px; resize: none; }
+
+.nl-main-btn {
+    background: var(--nl-accent);
+    border: none;
+    padding: 12px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.nl-main-btn:hover { background: #5094ff; box-shadow: 0 0 15px rgba(61,133,255,0.3); }
+
+/* Sidebar Footer */
+.nl-sidebar-footer { margin-top: auto; padding: 20px; text-align: center; }
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--nl-border);
+    color: var(--nl-text-dim);
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+
+
+/* BMW Info Specific Styles */
+.nl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.bmw-story h3 {
+    color: var(--nl-accent);
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.bmw-story p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.nl-divider {
+    height: 1px;
+    background: var(--nl-border);
+    margin: 20px 0;
+}
+
+.info-stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label { font-size: 8px; color: var(--nl-text-dim); }
+.stat-value { font-size: 14px; font-weight: bold; color: var(--nl-accent); font-family: 'Consolas', monospace; }
+
+/* Progress Bars (NL Style) */
+.nl-progress-bar {
+    height: 4px;
+    background: #08080a;
+    border: 1px solid var(--nl-border);
+    margin-top: 5px;
+    position: relative;
+}
+
+.nl-progress-bar .fill {
+    height: 100%;
+    background: var(--nl-accent);
+    box-shadow: 0 0 10px var(--nl-accent);
+    transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.nl-mini-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--nl-border);
+}
+
+.nl-mini-footer p {
+    font-size: 9px;
+    color: var(--nl-text-dim);
+    line-height: 1.4;
+}
+
+
+.address-details {
+    margin-top: 10px;
+}
+
+.address-text {
+    font-size: 11px;
+    color: #eee;
+    margin: 4px 0 0 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.address-text.highlight {
+    color: var(--nl-accent);
+    font-family: 'Consolas', monospace;
+    letter-spacing: 1px;
+}
+
+/* რუკის ჰოვერ ეფექტი */
+.map-container iframe:hover {
+    filter: grayscale(0.5) invert(0.9) opacity(1) !important;
+    transition: 0.3s;
+}
+
+
+/* --- CONTENT AREA NAVIGATION --- */
+.nl-sub-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--nl-border);
+}
+
+.nl-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--nl-border);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nl-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: rgba(61, 133, 255, 0.3);
+}
+
+.nl-tab-btn.active {
+    background: rgba(61, 133, 255, 0.1);
+    border-color: var(--nl-blue);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(61, 133, 255, 0.15);
+}
+
+.nl-tab-btn.active .icon {
+    color: var(--nl-blue);
+    filter: drop-shadow(0 0 8px var(--nl-blue));
+}
+
+/* --- FORM & INPUT ELEMENTS --- */
+.nl-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--nl-border);
+}
+
+/* System Pulse Indicator */
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: var(--nl-text-dim);
+    font-family: 'Consolas', monospace;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #50ffaf;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #50ffaf;
+}
+
+.pulse {
+    animation: nl-pulse 2s infinite;
+}
+
+@keyframes nl-pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- INFORMATION GRID --- */
+.nl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.info-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border: 1px solid var(--nl-border);
+    border-radius: 4px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 8px;
+    color: var(--nl-text-dim);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--nl-blue);
+    font-family: 'Consolas', monospace;
+}
+
+/* --- MAP & PROGRESS --- */
+.map-container {
+    margin-top: 15px;
+    border: 1px solid var(--nl-border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, rgba(12, 12, 14, 0.4) 100%);
+}
+
+.nl-progress-bar {
+    height: 4px;
+    background: #000;
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: var(--nl-blue);
+    box-shadow: 0 0 10px var(--nl-blue);
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+

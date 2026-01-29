@@ -1,12 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>BMW X | Support Terminal</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-    
+    <div id="header-root"></div>
+
+    <main class="nl-viewport">
+        <div class="nl-bg-glow"></div>
+
+        <div class="nl-window">
+            <aside class="nl-sidebar">
+                <div class="nl-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+    BMW<span class="x-accent">X</span>
+</div>
+            
+            </aside>
+
+           <section class="nl-content-area">
+    <div class="nl-sub-tabs">
+        <div class="nl-tab-btn active" onclick="switchContactModule('contact')">
+            <span class="icon">✉</span>
+            <span data-i18n="nav.contact">კონტაქტი</span>
+        </div>
+        <div class="nl-tab-btn" onclick="switchContactModule('info')">
+            <span class="icon">ℹ</span>
+            <span data-i18n="nav.models">ინფორმაცია</span>
+        </div>
+    </div>
+
+    <div id="tab-contact" class="tab-pane active">
+        <div class="nl-group">
+            <div class="nl-group-label" data-i18n="contact.title">შეტყობინების გაგზავნა</div>
+            <form id="contactForm">
+                <div class="nl-row">
+                    <div class="nl-field">
+                        <label data-i18n="contact.name">თქვენი სახელი</label>
+                        <input type="text" 
+                               data-i18n-placeholder="contact.placeholder.name" 
+                               placeholder="თქვენი სახელი...">
+                    </div>
+                    <div class="nl-field">
+                        <label data-i18n="filters.status">თემა</label>
+                        <select class="nl-select">
+                            <option value="tech" data-i18n="fuel.hybrid">Technical Support</option>
+                            <option value="biz" data-i18n="nav.auctions">Business Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="nl-field">
+                    <label data-i18n="contact.message">შეტყობინება</label>
+                    <textarea data-i18n-placeholder="contact.placeholder.msg" 
+                              placeholder="დაწერეთ შეტყობინება..."></textarea>
+                </div>
+
+                <div class="nl-form-footer">
+                    <div class="system-status">
+                        <span class="dot pulse"></span> <span data-i18n="damage.none">System Online</span>
+                    </div>
+                    <button type="submit" class="nl-main-btn">
+                        <span data-i18n="contact.send">გაგზავნა</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="tab-info" class="tab-pane">
+        <div class="nl-grid">
+            
+            <div class="nl-group">
+                <div class="nl-group-label" data-i18n="nav.models">CORPORATE_IDENTITY</div>
+                <div class="bmw-story">
+                    <h3 class="glitch-text" data-i18n="hero.title">SHEER DRIVING PLEASURE.</h3>
+                    <p data-i18n="hero.subtitle">BMW X წარმოადგენს ინოვაციისა და სიმძლავრის სიმბიოზს. ჩვენი მისიაა ციფრული გამოცდილება ისეთივე დინამიკური გავხადოთ, როგორც M-სერიის ძრავა.</p>
+                    
+                    <div class="nl-divider"></div>
+                    
+                    <div class="info-stats">
+                        <div class="stat-box">
+                            <span class="stat-label" data-i18n="filters.year">FOUNDED</span>
+                            <span class="stat-value">1916</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label" data-i18n="sold.rarity">HQ</span>
+                            <span class="stat-value">Munich, GER</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label" data-i18n="filters.status">X_SERIES</span>
+                            <span class="stat-value" data-i18n="damage.none">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nl-group">
+                <div class="nl-group-label" data-i18n="nav.home">SYSTEM_ANALYTICS & LOCATION</div>
+                <div class="analytics-container">
+                    
+                    <div class="nl-field">
+                        <label data-i18n="stats.registeredUsers">GLOBAL_REACH</label>
+                        <div class="nl-progress-bar">
+                            <div class="fill" style="width: 85%;" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="nl-field">
+                        <label data-i18n="stats.vehiclesSold">ENGINEERING_PRECISION</label>
+                        <div class="nl-progress-bar">
+                            <div class="fill" style="width: 99%;" data-width="99%"></div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.892055106173!2d44.7971!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e64f555b%3A0x2f04e1c6674e3048!2s15%20Shota%20Rustaveli%20Ave%2C%20T'bilisi!5e0!3m2!1sen!2sge!4v1700000000000!5m2!1sen!2sge" 
+        width="100%" 
+        height="150" 
+        style="border:1px solid var(--nl-border); filter: grayscale(1) invert(0.9) opacity(0.8) contrast(1.2);" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+                    
+                    <div class="nl-mini-footer">
+                        <p>BMW X Administration Terminal v4.5.0. <br> All data is encrypted via M-Cloud Sync.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
