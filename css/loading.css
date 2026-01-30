@@ -1,0 +1,146 @@
+/* ==========================================
+   BMW NEVERLOSE PRELOADER - FULL STYLES
+   ========================================== */
+
+#nl-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #08080a; /* მუქი პრემიუმ ფონი */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+/* კონტეინერის განლაგება */
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* ლოგოს სტილი და სკანირების ხაზი */
+.bmw-logo-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-logo {
+    width: 100%;
+    filter: drop-shadow(0 0 15px rgba(61, 133, 255, 0.3));
+    animation: logo-pulse 2s infinite ease-in-out;
+}
+
+.loader-scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3d85ff, transparent);
+    box-shadow: 0 0 10px #3d85ff;
+    animation: scan-move 1.8s infinite linear;
+}
+
+/* ტექსტის ბლოკი და ანიმაციები */
+.loader-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.bmw-text {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 20px; /* იწყება გაშლილი */
+    opacity: 0;
+    animation: bmw-reveal 0.8s forwards cubic-bezier(0.2, 1, 0.3, 1);
+    animation-delay: 0.4s;
+}
+
+.m-power-text {
+    font-family: 'Consolas', monospace;
+    font-size: 9px;
+    color: #3d85ff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: m-sub-reveal 0.6s forwards ease-out;
+    animation-delay: 0.8s;
+}
+
+/* პროგრეს ბარი ქვემოთ */
+.loader-bar-bg {
+    width: 120px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #3d85ff;
+    box-shadow: 0 0 8px #3d85ff;
+    animation: bar-slide 1.5s infinite ease-in-out;
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+
+@keyframes scan-move {
+    0% { top: 0%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes bmw-reveal {
+    to {
+        opacity: 1;
+        letter-spacing: 6px;
+    }
+}
+
+@keyframes m-sub-reveal {
+    to {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bar-slide {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
+}
+
+@keyframes logo-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.96); }
+}
+
+/* გაქრობის ეფექტი (როცა JS ჩაირთვება) */
+#nl-preloader.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
