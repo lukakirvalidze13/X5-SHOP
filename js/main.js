@@ -122,6 +122,8 @@ const translations = {
         "filter.custom.max": "მაქს",
         "filter.common.all": "ყველა",
         "filter.brand.title": "ფილტრები",
+        
+        
   },
   en: {
     "logo": "BMWX",

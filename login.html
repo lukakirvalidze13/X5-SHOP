@@ -1,100 +1,97 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-  <meta charset="UTF-8">
-  <title>BMW X | AUTHORIZATION</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <title>BMW X | NEVERLOSE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-
-  <div class="bg-animation"></div>
-  <div class="bg-glow"></div>
-
-  <main class="nl-window">
-    <a href="index.html" class="nl-window-close" title="Terminate Session">×</a>
+    <div class="bg-glow"></div>
     <div class="scanline"></div>
 
-    <aside class="nl-sidebar">
-      <div class="nl-logo">BMW<span>X</span></div>
-      
-      <div class="nl-sidebar-footer">
-        <span class="system-status">Authorization Terminal</span>
-        <span class="status-online">● SYSTEM_SECURED</span>
-      </div>
-    </aside>
+    <main class="nl-window">
+        <a href="index.html" class="nl-window-close">×</a>
 
- <section class="nl-content">
-  <header class="nl-header">
-    <h1 id="auth-title">LOGIN_SESSION</h1>
-    <p id="auth-subtitle">Identify yourself to access the private database.</p>
-  </header>
+        <aside class="nl-sidebar">
+            <a href="./index.html"><div class="nl-logo" data-i18n="logo">BMWX</div></a>
+            
+            <div class="lang-switch" style="margin-top: 20px; display: flex; gap: 10px;">
+                <span onclick="setLanguage('ka')" id="lang-ka" style="cursor:pointer; color:#3d85ff; font-size:11px; font-weight:bold;">GE</span>
+                <span style="color:#1c1c1f">|</span>
+                <span onclick="setLanguage('en')" id="lang-en" style="cursor:pointer; color:#4a4a4f; font-size:11px; font-weight:bold;">EN</span>
+            </div>
 
-  <form id="loginForm" class="nl-form">
-    <div class="input-group">
-      <label>User Identifier (Email)</label>
-      <input type="email" id="email" placeholder="operator@bmwx.ge" required>
-    </div>
+            <div class="nl-sidebar-footer">
+                <span class="status-online" data-i18n="footer.text">● © 2026 BMW X5 Platform</span>
+            </div>
+        </aside>
 
-    <div class="input-group">
-      <label>Access Key (Password)</label>
-      <input type="password" id="password" placeholder="••••••••" required>
-    </div>
+        <section class="nl-content">
+            <header class="nl-header">
+                <h1 id="auth-title" data-i18n="auth.login">შესვლა</h1>
+                <p id="auth-subtitle" data-i18n="hero.subtitle">პრემიუმ BMW X5 მოდელების ცოცხალი აუქციონები</p>
+            </header>
 
-    <div class="form-options">
-<label class="nl-checkbox-container">
-  <input type="checkbox">
-  <span class="nl-checkbox-box"></span>
-  <span class="nl-label-text">REMEMBER_DEVICE</span>
-</label>
-      <a href="javascript:void(0)" class="nl-link" onclick="showForm('recovery')">Lost Access?</a>
-    </div>
+            <form id="loginForm" class="nl-form">
+                <div class="input-group">
+                    <label data-i18n="car.fuel">საწვავი</label> 
+                    <input type="email" id="loginEmail" placeholder="operator@bmwx.ge" required>
+                </div>
+                <div class="input-group">
+                    <label data-i18n="sold.price">ფასი</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="nl-btn" data-i18n="auth.login">შესვლა</button>
+            </form>
 
-    <button type="submit" class="nl-btn">Execute Authentication</button>
-  </form>
+            <form id="registerForm" class="nl-form" style="display: none;">
+                <div class="nl-dual-layout">
+                    <div class="input-group"><label data-i18n="contact.placeholder.name">სახელი</label><input type="text" id="regFirstname" required></div>
+                    <div class="input-group"><label data-i18n="sold.engine">ძრავი</label><input type="text" id="regLastname" required></div>
+                </div>
+                <div class="nl-dual-layout">
+                    <div class="input-group"><label data-i18n="car.fuel">საწვავი</label><input type="text" id="regEmail" required></div>
+                    <div class="input-group"><label data-i18n="gw.modal.entries">მონაწილე</label><input type="text" id="regUsername" required></div>
+                </div>
+                <div class="nl-dual-layout">
+                    <div class="input-group">
+                        <label data-i18n="sold.price">ფასი</label>
+                        <input type="password" id="regPassword" required>
+                        <div id="passwordStrength" class="strength-meter">---</div>
+                    </div>
+                    <div class="input-group"><label data-i18n="gw.status.confirmed">დადასტურებული</label><input type="password" id="regConfirmPassword" required></div>
+                </div>
+                <div class="nl-dual-layout">
+                    <div class="input-group"><label data-i18n="gw.modal.location">ლოკაცია</label><input type="text" id="regCountry" required></div>
+                    <div class="input-group"><label data-i18n="sold.color">ფერი</label><input type="text" id="regCity" required></div>
+                </div>
+                <div class="nl-dual-layout">
+                    <div class="input-group">
+                        <label data-i18n="sold.mileage">გარბენი</label>
+                        <input type="tel" id="regPhone" pattern="[0-9]*" inputmode="numeric" required>
+                    </div>
+                    <div class="input-group"><label data-i18n="sold.date">აუქციონის თარიღი</label><input type="date" id="regDate" required></div>
+                </div>
+                <button type="submit" class="nl-btn" data-i18n="bid.now">დაბიდვა</button>
+            </form>
 
-  <form id="registerForm" class="nl-form" style="display: none;">
-    <div class="nl-dual-layout">
-      <div class="input-group">
-        <label>ACCESS_NAME</label>
-        <input type="text" placeholder="Username" required>
-      </div>
-      <div class="input-group">
-        <label>INVITE_CODE</label>
-        <input type="text" placeholder="NL-XXXX-XXXX" required>
-      </div>
-    </div>
-    <div class="input-group">
-      <label>EMAIL_ADDRESS</label>
-      <input type="email" placeholder="operator@bmwx.ge" required>
-    </div>
-    <div class="input-group">
-      <label>NEW_ACCESS_KEY</label>
-      <input type="password" placeholder="••••••••" required>
-    </div>
-    <button type="submit" class="nl-btn">INITIALIZE_REGISTRATION</button>
-  </form>
+            <footer class="nl-footer">
+                <div class="footer-main">
+                    <span id="switch-text" data-i18n="gw.status.awaiting">სტატუსი: მოლოდინის რეჟიმი</span>
+                    <a href="javascript:void(0)" id="toggle-auth" onclick="toggleForms()" data-i18n="auth.login">შესვლა</a>
+                </div>
+                
+                <div class="socials">
+                    <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </footer>
+        </section>
+    </main>
 
-  <form id="recoveryForm" class="nl-form" style="display: none;">
-    <div class="nl-recovery-alert">
-      <p>ACCOUNT_RECOVERY_PROTOCOL_INITIATED. ENTER REGISTERED EMAIL TO RECEIVE RESET_KEY.</p>
-    </div>
-    <div class="input-group">
-      <label>REGISTERED_EMAIL_ADDRESS</label>
-      <input type="email" placeholder="operator@bmwx.ge" required>
-    </div>
-    <button type="submit" class="nl-btn nl-btn-warn">REQUEST_ACCESS_RESET</button>
-  </form>
-
-  <footer class="nl-footer">
-    <span id="switch-text">Don't have an active license?</span> 
-    <a href="javascript:void(0)" id="toggle-auth" onclick="showForm('register')">Create Account</a>
-  </footer>
-</section>
-  </main>
-
-  <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>
