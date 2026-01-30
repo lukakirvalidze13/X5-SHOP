@@ -1119,3 +1119,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+function toggleMenu() {
+    const nav = document.querySelector('.main-nav');
+    const burger = document.getElementById('burgerBtn');
+
+    if (!nav || !burger) return;
+
+    const isOpen = nav.classList.toggle('mobile-active');
+    burger.classList.toggle('open', isOpen);
+
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+}
+
+/* MODULE-SAFE EVENT BINDING */
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burgerBtn');
+    if (burger) {
+        burger.addEventListener('click', toggleMenu);
+    }
+});
+window.toggleMenu = toggleMenu;

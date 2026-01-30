@@ -202,9 +202,129 @@ body, html {
 }
 .nl-checkbox-container input:checked ~ .nl-checkbox-box { background-color: #3d85ff; border-color: #3d85ff; }
 
-/* Responsive */
-@media (max-width: 1000px) {
-    .nl-window { width: 95%; height: 90vh; flex-direction: column; }
-    .nl-sidebar { width: 100%; height: 150px; min-height: 150px; padding: 20px; }
-    .nl-dual-layout { grid-template-columns: 1fr; }
+/* ======================================================
+   NEVERLOSE LOGIN - MOBILE OPTIMIZATION
+====================================================== */
+
+@media (max-width: 768px) {
+    /* მთლიანი ეკრანის ათვისება */
+    body, html {
+        overflow-y: auto; /* ვაძლევთ სქროლის უფლებას თუ ფორმა დიდია */
+        display: block; 
+    }
+
+    /* მთავარი კონტეინერი */
+    .nl-window {
+        width: 100% !important;
+        height: auto !important; /* სიმაღლე შიგთავსზე ადაპტირდება */
+        min-height: 100vh;
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* სიდებაარი (ზედა ნაწილი მობილურზე) */
+    .nl-sidebar {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 180px !important; /* ფიქსირებული სიმაღლე ზემოთ */
+        padding: 30px !important;
+        background-attachment: scroll;
+        border-right: none;
+        border-bottom: 1px solid #1c1c1f;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nl-logo {
+        font-size: 28px;
+    }
+
+    .status-online {
+        margin-bottom: 10px;
+    }
+
+    /* ფორმის ნაწილი */
+    .nl-content {
+        padding: 30px 20px !important;
+        overflow-y: visible !important; /* კონტენტი აღარ იჭედება სქროლში */
+    }
+
+    .nl-header h1 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .nl-header p {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* რეგისტრაციის ორმაგი ინპუტები (სახელი/გვარი) */
+    .nl-dual-layout {
+        grid-template-columns: 1fr !important; /* ერთ სვეტად დალაგება */
+        gap: 0;
+    }
+
+    /* ინპუტები და ღილაკები */
+    .input-group input {
+        padding: 16px; /* უფრო დიდი ადგილი თითისთვის */
+        font-size: 16px; /* iOS-ზე ავტომატური ზუმის თავიდან ასაცილებლად */
+    }
+
+    .nl-btn {
+        padding: 18px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* ფუტერი და სოციალურები */
+    .nl-footer {
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    .social-author {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    /* Close ღილაკის პოზიცია */
+    .nl-window-close {
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.5);
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        backdrop-filter: blur(5px);
+    }
+
+    /* ფონის Glow ეფექტის შემცირება მობილურისთვის (Performance) */
+    .bg-glow {
+        width: 300px;
+        height: 300px;
+        opacity: 0.4;
+    }
+}
+
+/* ძალიან პატარა ეკრანებისთვის (iPhone SE და ა.შ.) */
+@media (max-width: 380px) {
+    .nl-sidebar {
+        height: 140px !important;
+    }
+    .nl-header h1 {
+        font-size: 1.2rem;
+    }
 }

@@ -172,3 +172,144 @@ cubic-bezier(0.4, 0, 0.2, 1);
 
 
 
+/* ======================================================
+   BMW X6 GIVEAWAY - PERFECT MOBILE ADAPTATION
+====================================================== */
+
+@media (max-width: 900px) {
+    /* 1. CONTAINER ADJUSTMENTS */
+    .nl-main-container {
+        padding: 15px;
+    }
+
+    .nl-status-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 12px;
+        font-size: 10px;
+    }
+
+    /* 2. HERO SECTION (GRID TO COLUMN) */
+    .hero-section {
+        grid-template-columns: 1fr !important; /* მანქანა და პანელი სათითაოდ */
+        gap: 15px;
+    }
+
+    .vehicle-stage {
+        height: 320px; /* მცირდება სიმაღლე მობილურზე */
+    }
+
+    .main-vehicle-img {
+        width: 95%; /* მანქანა უფრო ივსებს ეკრანს */
+    }
+
+    .vehicle-info-overlay {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 12px;
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr); /* 4 სვეტიდან გადადის 2-ზე */
+        gap: 10px;
+    }
+
+    .info-item span {
+        font-size: 11px;
+    }
+
+    /* 3. REQUIREMENTS PANEL */
+    .requirements-panel {
+        padding: 20px 15px;
+    }
+
+    .task-item {
+        padding: 14px;
+        font-size: 12px;
+    }
+
+    .task-item:hover {
+        transform: none; /* მობილურზე Hover ეფექტები ხშირად უშნოა */
+    }
+
+    /* 4. ACTION FOOTER (STICKY OPTION) */
+    .action-footer {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .progress-container {
+        width: 100% !important;
+    }
+
+    .nl-enter-btn {
+        width: 100% !important; /* ღილაკი იკავებს მთელ სიგანეს */
+        height: 58px;
+        font-size: 14px;
+    }
+
+    /* 5. MODALS ADJUSTMENTS */
+    .nl-modal {
+        width: 90% !important;
+        padding: 25px 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .reaction-zone {
+        height: 100px;
+        font-size: 18px;
+    }
+
+    /* 6. ARCHIVE SECTION */
+    .archive-grid {
+        grid-template-columns: 1fr !important; /* არქივის მანქანები სათითაოდ */
+        gap: 20px;
+    }
+
+    .archive-img {
+        height: 200px;
+    }
+
+    /* 7. FULLSCREEN TERMINAL (WINNER VIEW) */
+    .terminal-fs-container {
+        flex-direction: column;
+    }
+
+    .terminal-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(61, 133, 255, 0.1);
+    }
+
+    .terminal-fs-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .fs-img-wrapper img {
+        height: 250px;
+    }
+
+    .reaction-cluster {
+        flex-wrap: wrap; /* რეაქციები ჩაეტიოს რამდენიმე ხაზზე */
+        justify-content: center;
+    }
+
+    .nl-reaction-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}
+
+/* Landscape Mode (Horizontal Phone) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .vehicle-stage { height: 250px; }
+    .action-footer { flex-direction: row; }
+}

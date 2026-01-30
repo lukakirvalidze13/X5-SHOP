@@ -12,9 +12,21 @@
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/loading.css">
   <script src="js/loading.js"></script>
+  <script src="js/slideshow.js"></script>
+  
 </head>
 <body>
+
+
+  
     <div id="header-root"></div>
+
+
+
+
+
+
+
 <div id="nl-preloader">
     <div class="loader-content">
         <div class="bmw-logo-wrapper">
@@ -27,7 +39,7 @@
 </div>
 
    
-
+  
   <!-- HERO -->
   <main>
     <section class="hero">
@@ -73,7 +85,7 @@
       </div>
 
       <div class="sold-card" data-year="2022" data-rare="yes">
-        <img src="https://www.marshallgoldman.com/imagetag/4436/3/l/Used-2025-BMW-X5-M-Competition-1756148090.jpg" alt="BMW X5 Sold 2">
+        <img src="https://cdn.bmwblog.com/wp-content/uploads/2020/02/2020-BMW-X5M-Mineral-White-44.jpg" alt="BMW X5 Sold 2">
         <div class="sold-card-info">
           <h3 >BMW X5M Competition</h3>
           <p data-i18n="x30.sold">€125,500</p>
@@ -144,8 +156,8 @@
 
     </div>
 
-    <!-- Car Image -->
-    <div class="sold-modal-image-container">
+      <!-- Car Image -->
+      <div class="sold-modal-image-container">
       <img src="" alt="Sold Vehicle" class="sold-modal-img" id="modalImgZoomable"  />
     </div>
     <div id="zoomOverlay" class="zoom-overlay">
@@ -154,6 +166,8 @@
     </div>
 
 
+    
+    
 
 
     <!-- Car Details Panel -->
@@ -184,7 +198,39 @@
 </section>
 
 
+<section class="nl-pure-viewer">
+    <div class="nl-watermark">SLIDESHOW</div>
 
+    <div class="nl-frame-container">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+
+        <div class="nl-viewer-display">
+            <div class="nl-pure-slide active">
+                <div class="nl-img-bg" style="background-image: url('assets/imgs/image_2026-01-30_183004251.png');"></div>
+            </div>
+            <div class="nl-pure-slide">
+                <div class="nl-img-bg" style="background-image: url('https://www.bmw-georgia.com/content/dam/bmw/common/all-models/x-series/x5/2021/technical-data/bmw-x5-technical-data-sp-desktop.jpg');"></div>
+            </div>
+            <div class="nl-pure-slide">
+                <div class="nl-img-bg" style="background-image: url('https://pixelz.cc/wp-content/uploads/2024/01/bmw-x5-black-vermilion-edition-uhd-4k-wallpaper.jpg');"></div>
+            </div>
+            <div class="nl-pure-slide">
+                <div class="nl-img-bg" style="background-image: url('https://www.topgear.com/sites/default/files/2024/05/P90489768_highRes_the-new-bmw-x5-xdriv.jpg');"></div>
+            </div>
+        </div>
+
+        <div class="nl-pure-nav">
+            <div class="nl-nav-track">
+                <button class="nl-arrow-btn" onclick="rotateSlide(-1)">❮</button>
+                <div class="nl-nav-bar-container">
+                    <div id="nlActiveBar" class="nl-nav-bar-fill"></div>
+                </div>
+                <button class="nl-arrow-btn" onclick="rotateSlide(1)">❯</button>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- STATS SECTION -->
 <section class="stats-section">
@@ -224,7 +270,7 @@
     <nav class="footer-nav">
       <a href="index.html" data-i18n="nav.home">მთავარი</a>
       <a href="auctions.html" data-i18n="nav.auctions">აუქციონები</a>
-      <a href="models.html" data-i18n="nav.models">მოდელები</a>
+      <a href="giveaways.html" data-i18n="nav.giveaways">გათამაშებები</a>
       <a href="contact.html" data-i18n="nav.contact">კონტაქტი</a>
     </nav>
 
@@ -237,6 +283,7 @@
   </div>
 </footer>
 
-  <script type="module" src="js/main.js"></script>
+  <!-- <script type="module" src="js/main.js"></script> -->
+  <script src="js/main.js"></script>
 </body>
 </html>
