@@ -31,95 +31,94 @@
 
   <div class="input-menu">
   <div class="filter-group">
-  <button class="value-btn" onclick="toggleFilter('damage')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-    <span>Damage</span>
-  </button>
-  <div id="opts-damage" class="flyout-drawer">
-    <div class="drawer-inner">
-      <label>Damage Type</label>
-      <select id="filterDamage" class="nl-select">
-        <option value="all">ყველა</option>
-        <option value="none">Clean</option>
-        <option value="front">Front</option>
-        <option value="rear">Rear</option>
-      </select>
+        <button class="value-btn" onclick="toggleFilter('damage')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span data-i18n="filter.damage">დაზიანება</span>
+        </button>
+        <div id="opts-damage" class="flyout-drawer">
+            <div class="drawer-inner">
+                <label data-i18n="filter.damage.label">დაზიანების ტიპი</label>
+                <select id="filterDamage" class="nl-select">
+                    <option value="all" data-i18n="filter.common.all">ყველა</option>
+                    <option value="none" data-i18n="filter.damage.clean">დაუზიანებელი</option>
+                    <option value="front" data-i18n="filter.damage.front">წინა დაზიანება</option>
+                    <option value="rear" data-i18n="filter.damage.rear">უკანა დაზიანება</option>
+                </select>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="filter-group">
+        <button class="value-btn" onclick="toggleFilter('year')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+            <span data-i18n="filter.year">წელი</span>
+        </button>
+        <div id="opts-year" class="flyout-drawer">
+            <div class="drawer-inner">
+                <label data-i18n="filter.year.label">გამოშვების წელი</label>
+                <select id="filterYear" class="nl-select">
+                    <option value="all" data-i18n="filter.common.all">ყველა</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="value-btn" onclick="toggleFilter('fuel')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V2a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v20"></path><path d="M7 22V5"></path><path d="M17 22V5"></path></svg>
+            <span data-i18n="filter.fuel">საწვავი</span>
+        </button>
+        <div id="opts-fuel" class="flyout-drawer">
+            <div class="drawer-inner">
+                <label data-i18n="filter.fuel.label">ძრავის ტიპი</label>
+                <select id="filterFuel" class="nl-select">
+                    <option value="all" data-i18n="filter.common.all">ყველა</option>
+                    <option value="diesel" data-i18n="filter.fuel.diesel">დიზელი</option>
+                    <option value="petrol" data-i18n="filter.fuel.petrol">ბენზინი</option>
+                    <option value="hybrid" data-i18n="filter.fuel.hybrid">ჰიბრიდი</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="value-btn" onclick="toggleFilter('price')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span data-i18n="filter.presets">პრეზეტები</span>
+        </button>
+        <div id="opts-price" class="flyout-drawer">
+            <div class="drawer-inner">
+                <label data-i18n="filter.presets.label">სწრაფი ფასი</label>
+                <div class="nl-grid">
+                    <button class="price-option" data-min="0" data-max="10000">0-10კ</button>
+                    <button class="price-option" data-min="10000" data-max="30000">10-30კ</button>
+                    <button class="price-option" data-min="30000" data-max="100000">30კ+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="value-btn" onclick="toggleFilter('custom')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span data-i18n="filter.custom">სხვა</span>
+        </button>
+        <div id="opts-custom" class="flyout-drawer">
+            <div class="drawer-inner">
+                <label data-i18n="filter.custom.label">ფასის დიაპაზონი (€)</label>
+                <div class="nl-inputs">
+                    <input type="number" id="customMin" placeholder="მინ" data-i18n-placeholder="filter.custom.min">
+                    <input type="number" id="customMax" placeholder="მაქს" data-i18n-placeholder="filter.custom.max">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-    <div class="filter-group">
-      <button class="value-btn" onclick="toggleFilter('year')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
-        <span>Year</span>
-      </button>
-      <div id="opts-year" class="flyout-drawer">
-        <div class="drawer-inner">
-          <label>Vehicle Year</label>
-          <select id="filterYear" class="nl-select">
-              <option value="all">ყველა</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-              <option value="2019">2019</option>
-              <option value="2018">2018</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <button class="value-btn" onclick="toggleFilter('fuel')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V2a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v20"></path><path d="M7 22V5"></path><path d="M17 22V5"></path></svg>
-        <span>Fuel</span>
-      </button>
-      <div id="opts-fuel" class="flyout-drawer">
-        <div class="drawer-inner">
-          <label>Engine Type</label>
-          <select id="filterFuel" class="nl-select">
-            <option value="all">ყველა</option>
-            <option value="diesel">Diesel</option>
-            <option value="petrol">Petrol</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <button class="value-btn" onclick="toggleFilter('price')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        <span>Presets</span>
-      </button>
-      <div id="opts-price" class="flyout-drawer">
-        <div class="drawer-inner">
-          <label>Quick Price</label>
-          <div class="nl-grid">
-            <button class="price-option" data-min="0" data-max="10000">0-10K</button>
-            <button class="price-option" data-min="10000" data-max="30000">10-30K</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <button class="value-btn" onclick="toggleFilter('custom')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span>Custom</span>
-      </button>
-      <div id="opts-custom" class="flyout-drawer">
-        <div class="drawer-inner">
-          <label>Range (€)</label>
-          <div class="nl-inputs">
-            <input type="number" id="customMin" placeholder="Min">
-            <input type="number" id="customMax" placeholder="Max">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </aside>
 
   <!-- AUCTIONS --> 

@@ -15,10 +15,10 @@
 <main class="nl-main-container">
     <div class="nl-status-header">
         <div id="statusText" class="status-left">
-            <span class="pulse-red">●</span> STATUS: <span class="white-text">AWAITING_PARTICIPATION</span>
+            <span class="pulse-red">●</span> <span data-i18n="gw.status.awaiting">სტატუსი: მოლოდინის რეჟიმი</span>
         </div>
         <div class="status-right">
-            NETWORK: <span class="blue-text">BMW_M_CONNECT</span> | NODE: <span class="blue-text">GE_01</span>
+            <span class="blue-text"></span>
         </div>
     </div>
 
@@ -26,47 +26,47 @@
         <div class="hero-section">
             <div class="vehicle-stage">
                 <div class="stage-overlay"></div>
-                <div class="rarity-tag">ULTIMATE PRIZE</div>
+                <div class="rarity-tag" data-i18n="gw.prize.rare">უნიკალური პრიზი</div>
                 <img src="https://bits-postman-lab.in/wp-content/uploads/2026/01/BMW-X6-2026-Launch.jpg" alt="BMW X6 M" class="main-vehicle-img">
                 
                 <div class="vehicle-info-overlay">
                     <div class="info-grid">
-                        <div class="info-item"><label>ENGINE</label><span>4.4L V8 M TwinPower</span></div>
-                        <div class="info-item"><label>POWER</label><span>625 HP / 750 NM</span></div>
-                        <div class="info-item"><label>0-100 KM/H</label><span>3.8 SECONDS</span></div>
-                        <div class="info-item"><label>TOP SPEED</label><span>290 KM/H</span></div>
+                        <div class="info-item"><label>ძრავი</label><span>4.4L V8 M TwinPower</span></div>
+                        <div class="info-item"><label>სიმძლავრე</label><span>625 ცხ.ძ / 750 NM</span></div>
+                        <div class="info-item"><label>0-100 კმ/სთ</label><span>3.8 წამი</span></div>
+                        <div class="info-item"><label>მაქს. სიჩქარე</label><span>290 კმ/სთ</span></div>
                     </div>
                 </div>
             </div>
 
             <div class="requirements-panel">
-                <div class="panel-header">GIVEAWAY_REQUIREMENTS</div>
+                <div class="panel-header" data-i18n="gw.req.title">გათამაშების მოთხოვნები</div>
                 <div class="task-list">
                     <div class="task-item" id="task-insta" onclick="handleTask('insta', 'https://instagram.com/bmw')">
                         <div class="task-icon">📸</div>
                         <div class="task-info">
-                            <label>SOCIAL_PROTOCOL</label>
-                            <p>Follow @BMW Official</p>
+                            <label>სოციალური პროტოკოლი</label>
+                            <p data-i18n="gw.task.insta">მიჰყევით @BMW-ს</p>
                         </div>
-                        <div class="task-status" id="status-insta">REQUIRED</div>
+                        <div class="task-status" id="status-insta">საჭიროა</div>
                     </div>
 
                     <div class="task-item" id="task-verify" onclick="handleTask('verify')">
                         <div class="task-icon">🤖</div>
                         <div class="task-info">
-                            <label>SECURITY_CHECK</label>
-                            <p>Human Verification</p>
+                            <label>უსაფრთხოება</label>
+                            <p data-i18n="gw.task.verify">ადამიანური ვერიფიკაცია</p>
                         </div>
-                        <div class="task-status" id="status-verify">REQUIRED</div>
+                        <div class="task-status" id="status-verify">საჭიროა</div>
                     </div>
 
                     <div class="task-item" id="task-share" onclick="handleTask('share')">
                         <div class="task-icon">🔗</div>
                         <div class="task-info">
-                            <label>NETWORK_SYNC</label>
-                            <p>Share to Story</p>
+                            <label>ქსელის სინქრონიზაცია</label>
+                            <p data-i18n="gw.task.share">გაზიარება სთორიში</p>
                         </div>
-                        <div class="task-status" id="status-share">REQUIRED</div>
+                        <div class="task-status" id="status-share">საჭიროა</div>
                     </div>
                 </div>
             </div>
@@ -75,48 +75,66 @@
         <div class="action-footer">
             <div class="progress-container">
                 <div class="progress-stats">
-                    <span>PARTICIPATION_LOAD</span>
+                    <span>აქტივობის დატვირთვა</span>
                     <span id="progress-percent">82%</span>
                 </div>
                 <div class="nl-progress-bar massive">
                     <div class="fill" id="main-progress" style="width: 82%;"></div>
                 </div>
             </div>
-            <button class="nl-enter-btn locked" id="enterGiveawayBtn" disabled>
-                LOCKED_BY_TASKS
+            <button class="nl-enter-btn locked" id="enterGiveawayBtn" disabled data-i18n="gw.btn.locked">
+                დაბლოკილია დავალებების გამო
             </button>
         </div>
     </section>
-
-    <section class="car-specs-section">
-        <h3 class="section-title">TECHNICAL_SPECIFICATIONS_BMW_X6_M</h3>
-        <div class="specs-table">
-            <div class="spec-row"><span>Transmission</span><span>8-Speed M Steptronic</span></div>
-            <div class="spec-row"><span>Drive Type</span><span>M xDrive with Active M Differential</span></div>
-            <div class="spec-row"><span>Weight</span><span>2,370 kg</span></div>
-            <div class="spec-row"><span>Exterior Color</span><span>Marina Bay Blue Metallic</span></div>
-        </div>
-    </section>
 </main>
+
+<div id="reqModal" class="nl-modal-overlay hidden">
+    <div class="nl-modal">
+        <div class="modal-header">
+            <span class="blue-text" data-i18n="gw.modal.verify.title">ვერიფიკაცია საჭიროა</span>
+        </div>
+        <div class="modal-body">
+            <p data-i18n="gw.modal.verify.text">დაასრულეთ ყველა მოთხოვნა მონაწილეობის მისაღებად?</p>
+            <div class="modal-actions">
+                <button class="nl-btn secondary" id="reqNo" data-i18n="gw.modal.btn.no">არა, გაუქმება</button>
+                <button class="nl-btn primary" id="reqYes" data-i18n="gw.modal.btn.yes">დიახ, გაგრძელება</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="gameModal" class="nl-modal-overlay hidden">
+    <div class="nl-modal">
+        <div class="modal-header">
+            <span class="blue-text" data-i18n="gw.game.title">რეაქციის პროტოკოლი</span>
+            <button onclick="closeAllModals()" class="close-x">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="dim-text">დააჭირეთ ინტერფეისს, როდესაც ის გალურჯდება</p>
+            <div id="gameCircle" class="reaction-zone" data-i18n="gw.game.wait">დაელოდეთ...</div>
+        </div>
+    </div>
+</div>
+
 <div id="successModal" class="nl-modal-overlay hidden">
     <div class="nl-modal success-card">
         <div class="modal-header">
-            <span class="blue-text">REGISTRATION_COMPLETE</span>
+            <span class="blue-text" data-i18n="gw.final.title">რეგისტრაცია დასრულებულია</span>
             <button onclick="closeAllModals()" class="close-x">×</button>
         </div>
         <div class="modal-body">
             <div class="success-vehicle-frame">
                 <img src="https://bits-postman-lab.in/wp-content/uploads/2026/01/BMW-X6-2026-Launch.jpg" alt="BMW X6 M" class="success-img">
             </div>
-            <h2 class="thank-you-title">THANK YOU FOR PARTICIPATING</h2>
-            <p class="dim-text">Your entry has been secured in the <span class="white-text">BMW_M_CONNECT</span> database. We will contact the winner via registered email.</p>
+            <h2 class="thank-you-title" data-i18n="gw.final.thanks">მადლობა მონაწილეობისთვის</h2>
+            <p class="dim-text" data-i18n="gw.final.text">თქვენი მონაცემები შენახულია BMW_M_CONNECT ბაზაში.</p>
             
             <div class="ticket-id-box">
-                <label>YOUR_ENTRY_ID</label>
-                <span id="ticketID">X6-M-8821-4492</span>
+                <label data-i18n="gw.final.id">თქვენი ID</label>
+                <span id="ticketID">გენერირდება...</span>
             </div>
-            
-            <button class="nl-btn primary full-width" onclick="closeAllModals()" style="margin-top: 20px;">CLOSE_INTERFACE</button>
+            <button class="nl-btn primary full-width" onclick="closeAllModals()" style="margin-top: 20px;">დახურვა</button>
         </div>
     </div>
 </div>
@@ -172,6 +190,105 @@
     </div>
 </div>
 
+<section class="archive-section">
+    <div class="section-divider">
+        <span class="divider-line"></span>
+        <h3 class="section-title">დასრულებული_გათამაშებების_არქივი</h3>
+        <span class="divider-line"></span>
+    </div>
+
+    <div class="archive-grid">
+        <div class="archive-card" onclick="showArchiveDetails('M4')">
+            <div class="status-stamp">დასრულებული</div>
+            <img src="https://bmw.scene7.com/is/image/BMW/M4--1680x756?wid=1680&hei=756" alt="BMW M4" class="archive-img">
+            <div class="archive-info">
+                <h4>BMW M4 COMPETITION</h4>
+                <div class="post-reactions-mini">
+                    <span>❤️ 1.2კ</span> <span>🔥 850</span> <span>💬 42</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="archive-card" onclick="showArchiveDetails('M5')">
+            <div class="status-stamp">დასრულებული</div>
+            <img src="https://4kwallpapers.com/images/walls/thumbs_3t/18178.jpg" alt="BMW M5" class="archive-img">
+            <div class="archive-info">
+                <h4>BMW M5 CS</h4>
+                <div class="post-reactions-mini">
+                    <span>❤️ 2.5კ</span> <span>🔥 1.1კ</span> <span>💬 89</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="archiveModal" class="nl-modal-overlay full-screen hidden">
+    <div class="terminal-fs-container">
+        <div class="terminal-sidebar">
+            <div class="sidebar-brand"></div>
+            <div class="terminal-close-wrapper">
+                <button onclick="closeArchiveModal()" class="x-btn-premium">
+                    <span class="x-text">გამოსვლა</span>
+                    <span class="x-icon">×</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="terminal-main-content">
+            <div class="terminal-fs-grid">
+                <div class="fs-visual-section">
+                    <div class="fs-img-wrapper">
+                        <div class="car-title-overlay" id="archiveCarTitle">BMW M5 CS</div>
+                        <img id="archiveModalImg" src="" alt="BMW">
+                        <div class="verified-watermark">გაცემულია</div>
+                    </div>
+                    
+                    <div class="fs-interaction-bar">
+                        <div class="reaction-cluster">
+                            <button class="nl-reaction-btn heart">
+                                <span class="icon">❤️</span>
+                                <span class="count" id="react-likes">0</span>
+                            </button>
+                            <button class="nl-reaction-btn fire">
+                                <span class="icon">🔥</span>
+                                <span class="count" id="react-fire">0</span>
+                            </button>
+                            <button class="nl-reaction-btn rocket">
+                                <span class="icon">🚀</span>
+                                <span class="count" id="react-rocket">0</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fs-info-section">
+                    <div class="data-block">
+                        <h5 class="block-title">გამარჯვებულის_შთაბეჭდილება</h5>
+                        <div class="fs-feedback-card">
+                            <div class="winner-profile">
+                                <div class="avatar-glow"></div>
+                                <div class="winner-name-id">
+                                    <span id="archiveWinner" class="white-text">USER</span>
+                                    <small id="archiveDate" class="dim-text">DATE</small>
+                                </div>
+                            </div>
+                            <p id="archiveFeedback" class="typing-text"></p>
+                        </div>
+                    </div>
+
+                    <div class="data-block">
+                        <h5 class="block-title">ავტომობილის_სტატუსი</h5>
+                        <div class="car-status-list">
+                            <div class="status-row"><span>●</span> მფლობელი: <span class="white-text">გადაცემულია</span></div>
+                            <div class="status-row"><span>●</span> ლოკაცია: <span class="white-text">თბილისი, საქართველო</span></div>
+                            <div class="status-row"><span>●</span> სტატუსი: <span class="green-text">დასრულებული</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="js/giveaways.js"></script>
     <script src="js/main.js"></script>
 </body>
