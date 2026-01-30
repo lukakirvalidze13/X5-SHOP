@@ -122,6 +122,18 @@ const translations = {
         "filter.custom.max": "მაქს",
         "filter.common.all": "ყველა",
         "filter.brand.title": "ფილტრები",
+          "auth.email": "ელფოსტა",
+        "auth.password": "პაროლი",
+        "auth.login": "შესვლა",
+        "auth.register": "რეგისტრაცია",
+        "auth.firstname": "სახელი",
+        "auth.lastname": "გვარი",
+        "auth.username": "მომხმარებლის სახელი",
+        "auth.confirmPassword": "პაროლის დადასტურება",
+        "auth.country": "ქვეყანა",
+        "auth.city": "ქალაქი",
+        "auth.phone": "ტელეფონის ნომერი",
+        "auth.birthdate": "დაბადების თარიღი"
         
         
   },
@@ -247,6 +259,18 @@ const translations = {
         "filter.custom.max": "Max",
         "filter.common.all": "All",
         "filter.brand.title": "Filters",
+        "auth.email": "Email",
+        "auth.password": "Password",
+        "auth.login": "Login",
+        "auth.register": "Register",
+        "auth.firstname": "First Name",
+        "auth.lastname": "Last Name",
+        "auth.username": "Username",
+        "auth.confirmPassword": "Confirm Password",
+        "auth.country": "Country",
+        "auth.city": "City",
+        "auth.phone": "Phone",
+        "auth.birthdate": "Birth Date"
   }
 };
 

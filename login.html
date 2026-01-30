@@ -34,48 +34,88 @@
                 <p id="auth-subtitle" data-i18n="hero.subtitle">პრემიუმ BMW X5 მოდელების ცოცხალი აუქციონები</p>
             </header>
 
+
             <form id="loginForm" class="nl-form">
-                <div class="input-group">
-                    <label data-i18n="car.fuel">საწვავი</label> 
-                    <input type="email" id="loginEmail" placeholder="operator@bmwx.ge" required>
-                </div>
-                <div class="input-group">
-                    <label data-i18n="sold.price">ფასი</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="nl-btn" data-i18n="auth.login">შესვლა</button>
+            <div class="input-group">
+                <label data-i18n="auth.email">ელფოსტა</label>
+                <input type="email" id="loginEmail" placeholder="operator@bmwx.ge" required>
+            </div>
+
+            <div class="input-group">
+                <label data-i18n="auth.password">პაროლი</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="nl-btn" data-i18n="auth.login">
+                შესვლა
+            </button>
             </form>
 
-            <form id="registerForm" class="nl-form" style="display: none;">
-                <div class="nl-dual-layout">
-                    <div class="input-group"><label data-i18n="contact.placeholder.name">სახელი</label><input type="text" id="regFirstname" required></div>
-                    <div class="input-group"><label data-i18n="sold.engine">ძრავი</label><input type="text" id="regLastname" required></div>
-                </div>
-                <div class="nl-dual-layout">
-                    <div class="input-group"><label data-i18n="car.fuel">საწვავი</label><input type="text" id="regEmail" required></div>
-                    <div class="input-group"><label data-i18n="gw.modal.entries">მონაწილე</label><input type="text" id="regUsername" required></div>
-                </div>
-                <div class="nl-dual-layout">
-                    <div class="input-group">
-                        <label data-i18n="sold.price">ფასი</label>
-                        <input type="password" id="regPassword" required>
-                        <div id="passwordStrength" class="strength-meter">---</div>
-                    </div>
-                    <div class="input-group"><label data-i18n="gw.status.confirmed">დადასტურებული</label><input type="password" id="regConfirmPassword" required></div>
-                </div>
-                <div class="nl-dual-layout">
-                    <div class="input-group"><label data-i18n="gw.modal.location">ლოკაცია</label><input type="text" id="regCountry" required></div>
-                    <div class="input-group"><label data-i18n="sold.color">ფერი</label><input type="text" id="regCity" required></div>
-                </div>
-                <div class="nl-dual-layout">
-                    <div class="input-group">
-                        <label data-i18n="sold.mileage">გარბენი</label>
-                        <input type="tel" id="regPhone" pattern="[0-9]*" inputmode="numeric" required>
-                    </div>
-                    <div class="input-group"><label data-i18n="sold.date">აუქციონის თარიღი</label><input type="date" id="regDate" required></div>
-                </div>
-                <button type="submit" class="nl-btn" data-i18n="bid.now">დაბიდვა</button>
-            </form>
+
+
+            <form id="registerForm" class="nl-form" style="display:none;">
+
+  <div class="nl-dual-layout">
+    <div class="input-group">
+      <label data-i18n="auth.firstname">სახელი</label>
+      <input type="text" id="regFirstname" required>
+    </div>
+    <div class="input-group">
+      <label data-i18n="auth.lastname">გვარი</label>
+      <input type="text" id="regLastname" required>
+    </div>
+  </div>
+
+  <div class="nl-dual-layout">
+    <div class="input-group">
+      <label data-i18n="auth.email">ელფოსტა</label>
+      <input type="email" id="regEmail" required>
+    </div>
+    <div class="input-group">
+      <label data-i18n="auth.username">მომხმარებლის სახელი</label>
+      <input type="text" id="regUsername" required>
+    </div>
+  </div>
+
+  <div class="nl-dual-layout">
+    <div class="input-group">
+      <label data-i18n="auth.password">პაროლი</label>
+      <input type="password" id="regPassword" required>
+      <div id="passwordStrength" class="strength-meter">---</div>
+    </div>
+    <div class="input-group">
+      <label data-i18n="auth.confirmPassword">პაროლის დადასტურება</label>
+      <input type="password" id="regConfirmPassword" required>
+    </div>
+  </div>
+
+  <div class="nl-dual-layout">
+    <div class="input-group">
+      <label data-i18n="auth.country">ქვეყანა</label>
+      <input type="text" id="regCountry" required>
+    </div>
+    <div class="input-group">
+      <label data-i18n="auth.city">ქალაქი</label>
+      <input type="text" id="regCity" required>
+    </div>
+  </div>
+
+  <div class="nl-dual-layout">
+    <div class="input-group">
+      <label data-i18n="auth.phone">ტელეფონის ნომერი</label>
+      <input type="tel" id="regPhone" required>
+    </div>
+    <div class="input-group">
+      <label data-i18n="auth.birthdate">დაბადების თარიღი</label>
+      <input type="date" id="regDate" required>
+    </div>
+  </div>
+
+  <button type="submit" class="nl-btn" data-i18n="auth.register">
+    რეგისტრაცია
+  </button>
+</form>
+
 
             <footer class="nl-footer">
                 <div class="footer-main">
